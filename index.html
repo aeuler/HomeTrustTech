@@ -529,67 +529,69 @@
             </div>
         </section>
 
-        <!-- Contact form (Formspree) — styled to match your Bootstrap layout -->
-        <form id="contactForm" class="p-4 border rounded-4" action="https://formspree.io/f/mgolakql" method="POST">
-            <div class="row g-3">
-                <!-- Optional: customize subject + add simple spam trap -->
-                <input type="hidden" name="_subject" value="New Home Trust Tech Lead" />
-                <input
-                    type="text"
-                    name="_gotcha"
-                    tabindex="-1"
-                    autocomplete="off"
-                    style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0"
-                    aria-hidden="true"
-                />
-
-                <div class="col-md-6">
-                    <label for="name" class="form-label">Name</label>
-                    <input id="name" name="name" class="form-control" placeholder="Jane Doe" required />
-                </div>
-
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
+        <section>
+            <!-- Contact form (Formspree) — styled to match your Bootstrap layout -->
+            <form id="contactForm" class="p-4 border rounded-4" action="https://formspree.io/f/mgolakql" method="POST">
+                <div class="row g-3">
+                    <!-- Optional: customize subject + add simple spam trap -->
+                    <input type="hidden" name="_subject" value="New Home Trust Tech Lead" />
                     <input
-                        id="email"
-                        name="email"
-                        class="form-control"
-                        type="email"
-                        placeholder="jane@company.com"
-                        required
+                        type="text"
+                        name="_gotcha"
+                        tabindex="-1"
+                        autocomplete="off"
+                        style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0"
+                        aria-hidden="true"
                     />
-                </div>
 
-                <div class="col-12">
-                    <label for="need" class="form-label">What do you need?</label>
-                    <select id="need" name="need" class="form-select">
-                        <option value="Security consulting">Security consulting</option>
-                        <option value="IT troubleshooting">IT troubleshooting</option>
-                        <option value="Setup / installation">Setup / installation</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" name="name" class="form-control" placeholder="Jane Doe" required />
+                    </div>
 
-                <div class="col-12">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        class="form-control"
-                        rows="4"
-                        placeholder="Tell us about your project..."
-                        required
-                    ></textarea>
-                </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                            id="email"
+                            name="email"
+                            class="form-control"
+                            type="email"
+                            placeholder="jane@company.com"
+                            required
+                        />
+                    </div>
 
-                <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
-                    <button class="btn btn-primary rounded-pill px-4" type="submit">Send</button>
-                    <div class="small text-secondary">
-                        You’ll be redirected to a confirmation page after submitting.
+                    <div class="col-12">
+                        <label for="need" class="form-label">What do you need?</label>
+                        <select id="need" name="need" class="form-select">
+                            <option value="Security consulting">Security consulting</option>
+                            <option value="IT troubleshooting">IT troubleshooting</option>
+                            <option value="Setup / installation">Setup / installation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Tell us about your project..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                        <button class="btn btn-primary rounded-pill px-4" type="submit">Send</button>
+                        <div class="small text-secondary">
+                            You’ll be redirected to a confirmation page after submitting.
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </section>
 
         <!-- FOOTER -->
         <footer class="py-4 border-top">
