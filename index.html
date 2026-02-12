@@ -529,68 +529,190 @@
             </div>
         </section>
 
-        <section>
-            <!-- Contact form (Formspree) — styled to match your Bootstrap layout -->
-            <form id="contactForm" class="p-4 border rounded-4" action="https://formspree.io/f/mgolakql" method="POST">
-                <div class="row g-3">
-                    <!-- Optional: customize subject + add simple spam trap -->
-                    <input type="hidden" name="_subject" value="New Home Trust Tech Lead" />
-                    <input
-                        type="text"
-                        name="_gotcha"
-                        tabindex="-1"
-                        autocomplete="off"
-                        style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0"
-                        aria-hidden="true"
-                    />
+        <!-- CONTACT (Redesigned — Formspree + Bootstrap, polished + cohesive) -->
+        <section id="contact" class="py-5 bg-light">
+            <div class="container py-4">
+                <div class="row justify-content-center text-center mb-4">
+                    <div class="col-lg-8">
+                        <h2 class="fw-bold mb-2">Contact</h2>
+                        <p class="text-secondary mb-0">
+                            Tell us what you need and we’ll get back to you with a clear next step.
+                        </p>
+                    </div>
+                </div>
 
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name</label>
-                        <input id="name" name="name" class="form-control" placeholder="Jane Doe" required />
+                <div class="row g-4 align-items-stretch">
+                    <!-- FORM CARD -->
+                    <div class="col-lg-7">
+                        <div class="bg-white shadow-lg rounded-4 border-0 h-100 p-4 p-md-5">
+                            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Request help</h5>
+                                    <p class="text-secondary mb-0 small">Most replies within 1 business day.</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-2 small text-secondary">
+                                    <i class="bi bi-shield-check"></i>
+                                    <span>No spam. Just solutions.</span>
+                                </div>
+                            </div>
+
+                            <form id="contactForm" action="https://formspree.io/f/mgolakql" method="POST">
+                                <!-- Optional: subject + honeypot -->
+                                <input type="hidden" name="_subject" value="New Home Trust Tech Lead" />
+                                <input
+                                    type="text"
+                                    name="_gotcha"
+                                    tabindex="-1"
+                                    autocomplete="off"
+                                    style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0"
+                                    aria-hidden="true"
+                                />
+
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input
+                                            id="name"
+                                            name="name"
+                                            class="form-control form-control-lg"
+                                            placeholder="Jane Doe"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            class="form-control form-control-lg"
+                                            type="email"
+                                            placeholder="jane@company.com"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="need" class="form-label">What do you need?</label>
+                                        <select id="need" name="need" class="form-select form-select-lg">
+                                            <option value="Security consulting">Security consulting</option>
+                                            <option value="IT troubleshooting">IT troubleshooting</option>
+                                            <option value="Setup / installation">Setup / installation</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            class="form-control"
+                                            rows="5"
+                                            placeholder="Tell us what’s going on, what devices/services are involved, and your timeline..."
+                                            required
+                                        ></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary btn-lg rounded-pill px-4" type="submit">
+                                            Send Message
+                                        </button>
+                                        <span class="ms-2 small text-secondary">
+                                            You’ll see a confirmation after submitting.
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="divider my-4"></div>
+
+                            <div class="row g-3 small">
+                                <div class="col-md-4">
+                                    <div class="d-flex gap-2 align-items-start">
+                                        <i class="bi bi-chat-dots text-primary"></i>
+                                        <div>
+                                            <div class="fw-semibold">Clear communication</div>
+                                            <div class="text-secondary">No jargon, just answers.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex gap-2 align-items-start">
+                                        <i class="bi bi-clock text-primary"></i>
+                                        <div>
+                                            <div class="fw-semibold">Fast response</div>
+                                            <div class="text-secondary">Usually within 24 hours.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex gap-2 align-items-start">
+                                        <i class="bi bi-house-check text-primary"></i>
+                                        <div>
+                                            <div class="fw-semibold">Home-friendly</div>
+                                            <div class="text-secondary">Built for real people.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">Email</label>
-                        <input
-                            id="email"
-                            name="email"
-                            class="form-control"
-                            type="email"
-                            placeholder="jane@company.com"
-                            required
-                        />
-                    </div>
+                    <!-- INFO CARD -->
+                    <div class="col-lg-5">
+                        <div class="bg-dark text-white shadow-lg rounded-4 h-100 p-4 p-md-5">
+                            <h5 class="fw-semibold mb-2">Home Trust Tech</h5>
+                            <p class="text-white-50 mb-4">
+                                Local, reliable help for setup, repair, and security guidance.
+                            </p>
 
-                    <div class="col-12">
-                        <label for="need" class="form-label">What do you need?</label>
-                        <select id="need" name="need" class="form-select">
-                            <option value="Security consulting">Security consulting</option>
-                            <option value="IT troubleshooting">IT troubleshooting</option>
-                            <option value="Setup / installation">Setup / installation</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
+                            <div class="d-flex gap-3 align-items-start mb-3">
+                                <i class="bi bi-geo-alt fs-4"></i>
+                                <div>
+                                    <div class="fw-semibold">Service Area</div>
+                                    <div class="text-white-50">Virginia Beach, VA</div>
+                                </div>
+                            </div>
 
-                    <div class="col-12">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            class="form-control"
-                            rows="4"
-                            placeholder="Tell us about your project..."
-                            required
-                        ></textarea>
-                    </div>
+                            <div class="d-flex gap-3 align-items-start mb-3">
+                                <i class="bi bi-envelope fs-4"></i>
+                                <div>
+                                    <div class="fw-semibold">Email</div>
+                                    <div class="text-white-50">Use the form to reach us</div>
+                                </div>
+                            </div>
 
-                    <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
-                        <button class="btn btn-primary rounded-pill px-4" type="submit">Send</button>
-                        <div class="small text-secondary">
-                            You’ll be redirected to a confirmation page after submitting.
+                            <div class="d-flex gap-3 align-items-start mb-4">
+                                <i class="bi bi-clock fs-4"></i>
+                                <div>
+                                    <div class="fw-semibold">Hours</div>
+                                    <div class="text-white-50">Mon–Fri, 9am–5pm</div>
+                                </div>
+                            </div>
+
+                            <div class="divider my-4"></div>
+
+                            <div class="p-3 rounded-4 bg-white bg-opacity-10">
+                                <div class="fw-semibold mb-1">What to include</div>
+                                <ul class="mb-0 text-white-50">
+                                    <li>Device type (PC/Mac/router/printer)</li>
+                                    <li>What changed recently</li>
+                                    <li>Any error messages</li>
+                                    <li>Deadline / urgency</li>
+                                </ul>
+                            </div>
+
+                            <div class="d-flex gap-2 mt-4 flex-wrap">
+                                <a class="btn btn-outline-light rounded-pill" href="#top">
+                                    <i class="bi bi-arrow-up"></i> Back to top
+                                </a>
+                                <a class="btn btn-outline-light rounded-pill" href="#services"> Explore services </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </section>
 
         <!-- FOOTER -->
