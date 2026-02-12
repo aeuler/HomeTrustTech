@@ -1,686 +1,708 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Trust Tech</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Home Trust Tech</title>
 
-    <!-- Bootstrap v5.3.8 (latest) -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+        <!-- Bootstrap v5.3.8 (latest) -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
 
-    <style>
-      :root {
-        --nav-h: 72px;
-      }
+        <style>
+            :root {
+                --nav-h: 72px;
+            }
 
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        padding-top: var(--nav-h);
-      }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                padding-top: var(--nav-h);
+            }
 
-      /* Offset anchor targets for sticky navbar */
-      section[id] {
-        scroll-margin-top: calc(var(--nav-h) + 12px);
-      }
+            /* Offset anchor targets for sticky navbar */
+            section[id] {
+                scroll-margin-top: calc(var(--nav-h) + 12px);
+            }
 
-      /* Parallax sections */
-      .parallax {
-        position: relative;
-        min-height: 70vh;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
+            /* Parallax sections */
+            .parallax {
+                position: relative;
+                min-height: 70vh;
+                display: grid;
+                place-items: center;
+                color: #fff;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
 
-      /* iOS / reduced-motion fallbacks */
-      @media (max-width: 991.98px) {
-        .parallax {
-          background-attachment: scroll;
-        }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-        .parallax {
-          background-attachment: scroll;
-        }
-      }
+            /* iOS / reduced-motion fallbacks */
+            @media (max-width: 991.98px) {
+                .parallax {
+                    background-attachment: scroll;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+                .parallax {
+                    background-attachment: scroll;
+                }
+            }
 
-      .parallax::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(120deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.35));
-      }
-      .parallax > .content {
-        position: relative;
-        z-index: 1;
-      }
+            .parallax::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(120deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.35));
+            }
+            .parallax > .content {
+                position: relative;
+                z-index: 1;
+            }
 
-      .hero {
-        min-height: 85vh;
-      }
+            .hero {
+                min-height: 85vh;
+            }
 
-      .glass {
-        backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 1.25rem;
-      }
+            .glass {
+                backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                border-radius: 1.25rem;
+            }
 
-      .feature-icon {
-        width: 3rem;
-        height: 3rem;
-        display: inline-grid;
-        place-items: center;
-        border-radius: 1rem;
-      }
+            .feature-icon {
+                width: 3rem;
+                height: 3rem;
+                display: inline-grid;
+                place-items: center;
+                border-radius: 1rem;
+            }
 
-      .card-hover {
-        transition: transform 180ms ease, box-shadow 180ms ease;
-      }
-      .card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 1rem 2.25rem rgba(0, 0, 0, 0.12);
-      }
+            .card-hover {
+                transition:
+                    transform 180ms ease,
+                    box-shadow 180ms ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 1rem 2.25rem rgba(0, 0, 0, 0.12);
+            }
 
-      .divider {
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0.14),
-          rgba(0, 0, 0, 0)
-        );
-      }
+            .divider {
+                height: 1px;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0));
+            }
 
-      footer a {
-        text-decoration: none;
-      }
+            footer a {
+                text-decoration: none;
+            }
 
-      .brand-mark {
-        width: 28px;
-        height: 28px;
-        border-radius: 10px;
-        background: radial-gradient(circle at 30% 30%, #7c3aed, #2563eb);
-        display: inline-block;
-        margin-right: 10px;
-      }
-    </style>
-  </head>
+            .brand-mark {
+                width: 28px;
+                height: 28px;
+                border-radius: 10px;
+                background: radial-gradient(circle at 30% 30%, #7c3aed, #2563eb);
+                display: inline-block;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
 
-  <body>
-    <!-- Single, flexible navbar (one nav that collapses on mobile) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-dark-subtle">
-      <div class="container">
-        <a class="navbar-brand fw-semibold" href="#top">
-          <span class="brand-mark"></span>Home Trust Tech
-        </a>
+    <body>
+        <!-- Single, flexible navbar (one nav that collapses on mobile) -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom border-dark-subtle">
+            <div class="container">
+                <a class="navbar-brand fw-semibold" href="#top"> <span class="brand-mark"></span>Home Trust Tech </a>
 
-        <!-- Toggler only appears automatically below lg because of navbar-expand-lg -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNav"
-          aria-controls="mainNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+                <!-- Toggler only appears automatically below lg because of navbar-expand-lg -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 py-2 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-primary btn-sm rounded-pill px-3 mt-2 mt-lg-0" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO (Parallax) -->
+        <header
+            id="top"
+            class="parallax hero"
+            style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=2400&q=70&quot;);
+            "
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+            <div class="content container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="p-4 p-md-5 glass">
+                            <p class="text-uppercase small mb-2 text-white-50">
+                                Security • Troubleshooting • Consulting
+                            </p>
+                            <h1 class="display-5 fw-bold mb-3">Setup, Repair, Consulting.</h1>
+                            <p class="lead mb-4 text-white-75">
+                                Home Trust Tech is your one stop shop for tech setup, repair, and consulting.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-4">Get a Proposal</a>
+                                <a href="#work" class="btn btn-outline-light btn-lg rounded-pill px-4"
+                                    >View Case Studies</a
+                                >
+                            </div>
 
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 py-2 py-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
-            <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-            <li class="nav-item ms-lg-2">
-              <a class="btn btn-primary btn-sm rounded-pill px-3 mt-2 mt-lg-0" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- HERO (Parallax) -->
-    <header
-      id="top"
-      class="parallax hero"
-      style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=2400&q=70');"
-    >
-      <div class="content container py-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <div class="p-4 p-md-5 glass">
-              <p class="text-uppercase small mb-2 text-white-50">Security • Troubleshooting • Consulting</p>
-              <h1 class="display-5 fw-bold mb-3">Setup, Repair, Consulting.</h1>
-              <p class="lead mb-4 text-white-75">
-                Home Trust Tech is your one stop shop for tech setup, repair, and consulting.
-              </p>
-              <div class="d-flex flex-wrap gap-2">
-                <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-4">Get a Proposal</a>
-                <a href="#work" class="btn btn-outline-light btn-lg rounded-pill px-4">View Case Studies</a>
-              </div>
-
-              <div class="row g-3 mt-4">
-                <div class="col-6 col-md-3">
-                  <div class="small text-white-50">Avg. Satisfaction</div>
-                  <div class="h4 fw-bold mb-0">+40%</div>
+                            <div class="row g-3 mt-4">
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-white-50">Avg. Satisfaction</div>
+                                    <div class="h4 fw-bold mb-0">+40%</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-white-50">Clients discovered</div>
+                                    <div class="h4 fw-bold mb-0">Weekly</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-white-50">Support</div>
+                                    <div class="h4 fw-bold mb-0">24/7</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-md-3">
-                  <div class="small text-white-50">Clients discovered</div>
-                  <div class="h4 fw-bold mb-0">Weekly</div>
-                </div>
-                <div class="col-6 col-md-3">
-                  <div class="small text-white-50">Support</div>
-                  <div class="h4 fw-bold mb-0">24/7</div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </header>
+        </header>
 
-    <!-- SERVICES -->
-    <section id="services" class="py-5">
-      <div class="container py-3">
-        <div class="row align-items-end g-3 mb-4">
-          <div class="col-lg-7">
-            <h2 class="fw-bold mb-1">Services</h2>
-            <p class="text-secondary mb-0">A few “what we do” blocks to help you understand our process.</p>
-          </div>
-          <div class="col-lg-5 text-lg-end">
-            <a class="btn btn-outline-dark rounded-pill" href="#pricing">See Pricing</a>
-          </div>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <div class="feature-icon bg-primary-subtle text-primary mb-3">
-                  <i class="bi bi-shield-lock fs-4"></i>
+        <!-- SERVICES -->
+        <section id="services" class="py-5">
+            <div class="container py-3">
+                <div class="row align-items-end g-3 mb-4">
+                    <div class="col-lg-7">
+                        <h2 class="fw-bold mb-1">Services</h2>
+                        <p class="text-secondary mb-0">A few “what we do” blocks to help you understand our process.</p>
+                    </div>
+                    <div class="col-lg-5 text-lg-end">
+                        <a class="btn btn-outline-dark rounded-pill" href="#pricing">See Pricing</a>
+                    </div>
                 </div>
-                <h5 class="card-title fw-semibold">Security Consulting</h5>
-                <p class="card-text text-secondary">
-                  Threat modeling, Risk Assesments, Easy to understand language.
-                </p>
-                <ul class="small text-secondary mb-0">
-                  <li>Spend time listening to your needs</li>
-                  <li>Create formal access policies</li>
-                  <li>Baseline security recommendations according to standards</li>
-                </ul>
-              </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 card-hover">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-primary-subtle text-primary mb-3">
+                                    <i class="bi bi-shield-lock fs-4"></i>
+                                </div>
+                                <h5 class="card-title fw-semibold">Security Consulting</h5>
+                                <p class="card-text text-secondary">
+                                    Threat modeling, Risk Assesments, Easy to understand language.
+                                </p>
+                                <ul class="small text-secondary mb-0">
+                                    <li>Spend time listening to your needs</li>
+                                    <li>Create formal access policies</li>
+                                    <li>Baseline security recommendations according to standards</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 card-hover">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-success-subtle text-success mb-3">
+                                    <i class="bi bi-cloud-arrow-up fs-4"></i>
+                                </div>
+                                <h5 class="card-title fw-semibold">IT troubleshooting</h5>
+                                <p class="card-text text-secondary">
+                                    Move on from overpriced invoices and get the help you desire.
+                                </p>
+                                <ul class="small text-secondary mb-0">
+                                    <li>Basic troubleshooting</li>
+                                    <li>Full Diagnostics</li>
+                                    <li>Complete repairs or replacemen</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 card-hover">
+                            <div class="card-body p-4">
+                                <div class="feature-icon bg-warning-subtle text-warning mb-3">
+                                    <i class="bi bi-speedometer2 fs-4"></i>
+                                </div>
+                                <h5 class="card-title fw-semibold"></h5>
+                                <p class="card-text text-secondary">
+                                    Make pages snappy and backends resilient under load—without guesswork.
+                                </p>
+                                <ul class="small text-secondary mb-0">
+                                    <li>Profiling & bottleneck removal</li>
+                                    <li>Caching & CDN strategy</li>
+                                    <li>Load test + runbooks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <div class="feature-icon bg-success-subtle text-success mb-3">
-                  <i class="bi bi-cloud-arrow-up fs-4"></i>
+        <!-- PARALLAX STRIPE -->
+        <section
+            class="parallax"
+            style="
+                min-height: 45vh;
+                background-image: url(&quot;https://images.unsplash.com/photo-1526378722370-6f4c6e8b9d8b?auto=format&fit=crop&w=2400&q=70&quot;);
+            "
+        >
+            <div class="content container text-center py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="fw-bold mb-2">
+                            We understand times are tough and looking for IT pros is brain racking.
+                        </h2>
+                        <p class="lead text-white-75 mb-4">
+                            With the help of our team, we will make you feel not only satisfied, but empowered.
+                        </p>
+                        <a href="#contact" class="btn btn-light btn-lg rounded-pill px-4">Talk to Us</a>
+                    </div>
                 </div>
-                <h5 class="card-title fw-semibold">IT troubleshooting</h5>
-                <p class="card-text text-secondary">
-                  Move on from overpriced invoices and get the help you desire.
-                </p>
-                <ul class="small text-secondary mb-0">
-                  <li>Basic troubleshooting</li>
-                  <li>Full Diagnostics</li>
-                  <li>Complete repairs or replacemen</li>
-                </ul>
-              </div>
             </div>
-          </div>
+        </section>
 
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <div class="feature-icon bg-warning-subtle text-warning mb-3">
-                  <i class="bi bi-speedometer2 fs-4"></i>
+        <!-- ABOUT -->
+        <section id="about" class="py-5 bg-light">
+            <div class="container py-3">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="fw-bold">About Home Trust Tech</h2>
+                        <p class="text-secondary">
+                            We are a group of like-minded indviduals who understand the importance of translating
+                            technical jargon into real language anyone can understand. With Home Trust Tech, you will
+                            feel apart of a family who understands your needs and listens to your concerns. You'll never
+                            feel overlooked again!
+                        </p>
+
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-white border rounded-4 h-100">
+                                    <div class="fw-semibold mb-1">
+                                        <i class="bi bi-people me-2"></i>Small team, senior talent
+                                    </div>
+                                    <div class="text-secondary small">Direct collaboration—no handoffs.</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-white border rounded-4 h-100">
+                                    <div class="fw-semibold mb-1">
+                                        <i class="bi bi-check2-circle me-2"></i>Outcome-driven
+                                    </div>
+                                    <div class="text-secondary small">Metrics, timelines, and clear deliverables.</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-white border rounded-4 h-100">
+                                    <div class="fw-semibold mb-1">
+                                        <i class="bi bi-diagram-3 me-2"></i>Pragmatic architecture
+                                    </div>
+                                    <div class="text-secondary small">Modern schedules that meet your deadlines.</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-3 bg-white border rounded-4 h-100">
+                                    <div class="fw-semibold mb-1">
+                                        <i class="bi bi-shield-check me-2"></i>Security-first
+                                    </div>
+                                    <div class="text-secondary small">Best practices baked in, not bolted on.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <img
+                                alt="Team working"
+                                class="img-fluid"
+                                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70"
+                            />
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">Zero-trust</span>
+                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">DevSecOps</span>
+                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">Observability</span>
+                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">SRE</span>
+                                </div>
+                                <p class="text-secondary mt-3 mb-0">
+                                    Swap this image and badges to match your brand and domain.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h5 class="card-title fw-semibold"></h5>
-                <p class="card-text text-secondary">
-                  Make pages snappy and backends resilient under load—without guesswork.
-                </p>
-                <ul class="small text-secondary mb-0">
-                  <li>Profiling & bottleneck removal</li>
-                  <li>Caching & CDN strategy</li>
-                  <li>Load test + runbooks</li>
-                </ul>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- PARALLAX STRIPE -->
-    <section
-      class="parallax"
-      style="min-height:45vh;background-image:url('https://images.unsplash.com/photo-1526378722370-6f4c6e8b9d8b?auto=format&fit=crop&w=2400&q=70');"
-    >
-      <div class="content container text-center py-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="fw-bold mb-2">We understand times are tough and looking for IT pros is brain racking.</h2>
-            <p class="lead text-white-75 mb-4">
-              With the help of our team, we will make you feel not only satisfied, but empowered.
-            </p>
-            <a href="#contact" class="btn btn-light btn-lg rounded-pill px-4">Talk to Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- WORK -->
+        <section id="work" class="py-5">
+            <div class="container py-3">
+                <div class="row align-items-end g-3 mb-4">
+                    <div class="col-lg-7">
+                        <h2 class="fw-bold mb-1">Recent Work</h2>
+                        <p class="text-secondary mb-0">Three mock case studies with clean, scannable structure.</p>
+                    </div>
+                    <div class="col-lg-5 text-lg-end">
+                        <a class="btn btn-outline-dark rounded-pill" href="#contact">Request a similar build</a>
+                    </div>
+                </div>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-5 bg-light">
-      <div class="container py-3">
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-6">
-            <h2 class="fw-bold">About Home Trust Tech</h2>
-            <p class="text-secondary">
-              We are a group of like-minded indviduals who understand the importance of translating technical jargon into real language anyone can understand. 
-			  With Home Trust Tech, you will feel apart of a family who understands your needs and listens to your concerns. You'll never feel overlooked again!
-            </p>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card h-100 card-hover">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="fw-semibold mb-1">Fintech API Hardening</h5>
+                                    <span class="badge text-bg-primary rounded-pill">4 weeks</span>
+                                </div>
+                                <p class="text-secondary small mb-3">
+                                    Reduced auth failures and improved auditability.
+                                </p>
+                                <ul class="text-secondary mb-0">
+                                    <li>Threat model + fixes</li>
+                                    <li>Token flow cleanup</li>
+                                    <li>Structured logging</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <div class="p-3 bg-white border rounded-4 h-100">
-                  <div class="fw-semibold mb-1"><i class="bi bi-people me-2"></i>Small team, senior talent</div>
-                  <div class="text-secondary small">Direct collaboration—no handoffs.</div>
+                    <div class="col-lg-4">
+                        <div class="card h-100 card-hover">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="fw-semibold mb-1">Cloud Cost Optimization</h5>
+                                    <span class="badge text-bg-success rounded-pill">6 weeks</span>
+                                </div>
+                                <p class="text-secondary small mb-3">Cut spend while improving reliability.</p>
+                                <ul class="text-secondary mb-0">
+                                    <li>Right-sizing</li>
+                                    <li>Cache + CDN changes</li>
+                                    <li>Autoscaling policies</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card h-100 card-hover">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="fw-semibold mb-1">Performance Overhaul</h5>
+                                    <span class="badge text-bg-warning rounded-pill">3 weeks</span>
+                                </div>
+                                <p class="text-secondary small mb-3">Improved page speed and backend throughput.</p>
+                                <ul class="text-secondary mb-0">
+                                    <li>Profiling + tuning</li>
+                                    <li>Query optimization</li>
+                                    <li>Load test suite</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="p-3 bg-white border rounded-4 h-100">
-                  <div class="fw-semibold mb-1"><i class="bi bi-check2-circle me-2"></i>Outcome-driven</div>
-                  <div class="text-secondary small">Metrics, timelines, and clear deliverables.</div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="p-3 bg-white border rounded-4 h-100">
-                  <div class="fw-semibold mb-1"><i class="bi bi-diagram-3 me-2"></i>Pragmatic architecture</div>
-                  <div class="text-secondary small">Modern schedules that meet your deadlines.</div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="p-3 bg-white border rounded-4 h-100">
-                  <div class="fw-semibold mb-1"><i class="bi bi-shield-check me-2"></i>Security-first</div>
-                  <div class="text-secondary small">Best practices baked in, not bolted on.</div>
-                </div>
-              </div>
             </div>
-          </div>
+        </section>
 
-          <div class="col-lg-6">
-            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-              <img
-                alt="Team working"
-                class="img-fluid"
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70"
-              />
-              <div class="card-body p-4">
-                <div class="d-flex flex-wrap gap-2">
-                  <span class="badge text-bg-dark rounded-pill px-3 py-2">Zero-trust</span>
-                  <span class="badge text-bg-dark rounded-pill px-3 py-2">DevSecOps</span>
-                  <span class="badge text-bg-dark rounded-pill px-3 py-2">Observability</span>
-                  <span class="badge text-bg-dark rounded-pill px-3 py-2">SRE</span>
+        <!-- PARALLAX STRIPE 2 -->
+        <section
+            class="parallax"
+            style="
+                min-height: 50vh;
+                background-image: url(&quot;https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=70&quot;);
+            "
+        >
+            <div class="content container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="glass p-4 p-md-5">
+                            <h2 class="fw-bold mb-2">A second parallax section for testimonials</h2>
+                            <p class="text-white-75 mb-4">
+                                “Northstar delivered measurable improvements fast—clean plan, clean execution.”
+                            </p>
+                            <div class="d-flex align-items-center gap-3">
+                                <div
+                                    class="rounded-circle bg-light bg-opacity-25"
+                                    style="width: 48px; height: 48px"
+                                ></div>
+                                <div>
+                                    <div class="fw-semibold">Jordan Rivera</div>
+                                    <div class="small text-white-50">VP Engineering, ExampleCo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-secondary mt-3 mb-0">Swap this image and badges to match your brand and domain.</p>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- WORK -->
-    <section id="work" class="py-5">
-      <div class="container py-3">
-        <div class="row align-items-end g-3 mb-4">
-          <div class="col-lg-7">
-            <h2 class="fw-bold mb-1">Recent Work</h2>
-            <p class="text-secondary mb-0">Three mock case studies with clean, scannable structure.</p>
-          </div>
-          <div class="col-lg-5 text-lg-end">
-            <a class="btn btn-outline-dark rounded-pill" href="#contact">Request a similar build</a>
-          </div>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-start">
-                  <h5 class="fw-semibold mb-1">Fintech API Hardening</h5>
-                  <span class="badge text-bg-primary rounded-pill">4 weeks</span>
+        <!-- PRICING -->
+        <section id="pricing" class="py-5 bg-light">
+            <div class="container py-3">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold mb-1">Pricing</h2>
+                    <p class="text-secondary mb-0">Tiers for every level of support</p>
                 </div>
-                <p class="text-secondary small mb-3">Reduced auth failures and improved auditability.</p>
-                <ul class="text-secondary mb-0">
-                  <li>Threat model + fixes</li>
-                  <li>Token flow cleanup</li>
-                  <li>Structured logging</li>
-                </ul>
-              </div>
+
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+                            <div class="card-body p-4">
+                                <h5 class="fw-semibold">Starter</h5>
+                                <div class="display-6 fw-bold my-3">$50</div>
+                                <ul class="text-secondary">
+                                    <li>1 assessment area</li>
+                                    <li>Findings + quick wins</li>
+                                    <li>1 follow-up call</li>
+                                </ul>
+                                <a href="#contact" class="btn btn-outline-dark w-100 rounded-pill">Choose Starter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="fw-semibold">Growth</h5>
+                                    <span class="badge text-bg-primary rounded-pill">Popular</span>
+                                </div>
+                                <div class="display-6 fw-bold my-3">$100</div>
+                                <ul class="text-secondary">
+                                    <li>Multi-area review</li>
+                                    <li>Remediation plan</li>
+                                    <li>Implementation support</li>
+                                </ul>
+                                <a href="#contact" class="btn btn-primary w-100 rounded-pill">Choose Growth</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+                            <div class="card-body p-4">
+                                <h5 class="fw-semibold">Enterprise</h5>
+                                <div class="display-6 fw-bold my-3">Custom</div>
+                                <ul class="text-secondary">
+                                    <li>Dedicated engagement</li>
+                                    <li>SLAs + reporting</li>
+                                    <li>Ongoing advisory</li>
+                                </ul>
+                                <a href="#contact" class="btn btn-outline-dark w-100 rounded-pill">Talk to Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="col-lg-4">
-            <div class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-start">
-                  <h5 class="fw-semibold mb-1">Cloud Cost Optimization</h5>
-                  <span class="badge text-bg-success rounded-pill">6 weeks</span>
+        <!-- CONTACT (wired to Google Apps Script -> Google Sheets) -->
+        <section id="contact" class="py-5">
+            <div class="container py-3">
+                <div class="row g-4 align-items-start">
+                    <div class="col-lg-6">
+                        <h2 class="fw-bold mb-2">Contact</h2>
+                        <p class="text-secondary">This form will append a row to your Google Sheet via Apps Script.</p>
+
+                        <form id="contactForm" class="p-4 border rounded-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Name</label>
+                                    <input id="name" class="form-control" placeholder="Jane Doe" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input
+                                        id="email"
+                                        class="form-control"
+                                        type="email"
+                                        placeholder="jane@company.com"
+                                        required
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">What do you need?</label>
+                                    <select id="need" class="form-select">
+                                        <option>Security review</option>
+                                        <option>Cloud modernization</option>
+                                        <option>Performance tuning</option>
+                                        <option>Something else</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Message</label>
+                                    <textarea
+                                        id="message"
+                                        class="form-control"
+                                        rows="4"
+                                        placeholder="Tell us about your project..."
+                                        required
+                                    ></textarea>
+                                </div>
+                                <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                                    <button id="sendBtn" class="btn btn-primary rounded-pill px-4" type="submit">
+                                        Send Message
+                                    </button>
+                                    <div id="formStatus" class="small text-secondary"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="p-4 p-md-5 bg-dark text-white rounded-4 h-100">
+                            <h5 class="fw-semibold">Home Trust Tech</h5>
+                            <p class="text-white-50 mb-4">N/A</p>
+
+                            <div class="d-flex gap-3 align-items-start mb-3">
+                                <i class="bi bi-geo-alt fs-4"></i>
+                                <div>
+                                    <div class="fw-semibold">Office</div>
+                                    <div class="text-white-50">Virignia Beach, VA, USA</div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3 align-items-start mb-3">
+                                <i class="bi bi-envelope fs-4"></i>
+                                <div>
+                                    <div class="fw-semibold">Email</div>
+                                    <div class="text-white-50">N/A</div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3 align-items-start">
+                                <i class="bi bi-clock fs-4"></i>
+                                <div>
+                                    <div class="fw-semibold">Hours</div>
+                                    <div class="text-white-50">Mon–Fri, 9am–5pm</div>
+                                </div>
+                            </div>
+
+                            <div class="divider my-4"></div>
+
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-outline-light rounded-pill" href="#top">
+                                    <i class="bi bi-arrow-up"></i> Back to top
+                                </a>
+                                <a class="btn btn-outline-light rounded-pill" href="#services">Explore services</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-secondary small mb-3">Cut spend while improving reliability.</p>
-                <ul class="text-secondary mb-0">
-                  <li>Right-sizing</li>
-                  <li>Cache + CDN changes</li>
-                  <li>Autoscaling policies</li>
-                </ul>
-              </div>
             </div>
-          </div>
+        </section>
 
-          <div class="col-lg-4">
-            <div class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-start">
-                  <h5 class="fw-semibold mb-1">Performance Overhaul</h5>
-                  <span class="badge text-bg-warning rounded-pill">3 weeks</span>
+        <!-- FOOTER -->
+        <footer class="py-4 border-top">
+            <div class="container">
+                <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2"
+                >
+                    <div class="text-secondary small">
+                        © <span id="year"></span> Home Trust Tech. All rights reserved.
+                    </div>
+                    <div class="d-flex gap-3 small">
+                        <a class="text-secondary" href="#about">About</a>
+                        <a class="text-secondary" href="#pricing">Pricing</a>
+                        <a class="text-secondary" href="#contact">Contact</a>
+                    </div>
                 </div>
-                <p class="text-secondary small mb-3">Improved page speed and backend throughput.</p>
-                <ul class="text-secondary mb-0">
-                  <li>Profiling + tuning</li>
-                  <li>Query optimization</li>
-                  <li>Load test suite</li>
-                </ul>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </footer>
 
-    <!-- PARALLAX STRIPE 2 -->
-    <section
-      class="parallax"
-      style="min-height:50vh;background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=70');"
-    >
-      <div class="content container py-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <div class="glass p-4 p-md-5">
-              <h2 class="fw-bold mb-2">A second parallax section for testimonials</h2>
-              <p class="text-white-75 mb-4">
-                “Northstar delivered measurable improvements fast—clean plan, clean execution.”
-              </p>
-              <div class="d-flex align-items-center gap-3">
-                <div class="rounded-circle bg-light bg-opacity-25" style="width:48px;height:48px;"></div>
-                <div>
-                  <div class="fw-semibold">Jordan Rivera</div>
-                  <div class="small text-white-50">VP Engineering, ExampleCo</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Bootstrap JS (bundle includes Popper) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- PRICING -->
-    <section id="pricing" class="py-5 bg-light">
-      <div class="container py-3">
-        <div class="text-center mb-4">
-          <h2 class="fw-bold mb-1">Pricing</h2>
-          <p class="text-secondary mb-0">Tiers for every level of support</p>
-        </div>
+        <script>
+            // Footer year
+            document.getElementById("year").textContent = new Date().getFullYear();
 
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-              <div class="card-body p-4">
-                <h5 class="fw-semibold">Starter</h5>
-                <div class="display-6 fw-bold my-3">$50</div>
-                <ul class="text-secondary">
-                  <li>1 assessment area</li>
-                  <li>Findings + quick wins</li>
-                  <li>1 follow-up call</li>
-                </ul>
-                <a href="#contact" class="btn btn-outline-dark w-100 rounded-pill">Choose Starter</a>
-              </div>
-            </div>
-          </div>
+            // Close the mobile nav after clicking a link (only matters when collapsed)
+            document.querySelectorAll("#mainNav a.nav-link, #mainNav a.btn").forEach((a) => {
+                a.addEventListener("click", () => {
+                    const nav = document.getElementById("mainNav");
+                    if (nav.classList.contains("show")) {
+                        const collapse =
+                            bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, { toggle: false });
+                        collapse.hide();
+                    }
+                });
+            });
 
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-              <div class="card-body p-4">
-                <div class="d-flex justify-content-between align-items-start">
-                  <h5 class="fw-semibold">Growth</h5>
-                  <span class="badge text-bg-primary rounded-pill">Popular</span>
-                </div>
-                <div class="display-6 fw-bold my-3">$100</div>
-                <ul class="text-secondary">
-                  <li>Multi-area review</li>
-                  <li>Remediation plan</li>
-                  <li>Implementation support</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary w-100 rounded-pill">Choose Growth</a>
-              </div>
-            </div>
-          </div>
+            // ---- Contact form -> Google Apps Script Web App -> Google Sheet ----
+            const WEB_APP_URL =
+                "https://script.google.com/macros/s/AKfycbzEJJaBxgGowyKBa2OhvpcpCdCQ-Gh-9FeXIDNXXJihqtiYNOsey7EWCPyq5moeLQTfzw/exec";
 
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-              <div class="card-body p-4">
-                <h5 class="fw-semibold">Enterprise</h5>
-                <div class="display-6 fw-bold my-3">Custom</div>
-                <ul class="text-secondary">
-                  <li>Dedicated engagement</li>
-                  <li>SLAs + reporting</li>
-                  <li>Ongoing advisory</li>
-                </ul>
-                <a href="#contact" class="btn btn-outline-dark w-100 rounded-pill">Talk to Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            const form = document.getElementById("contactForm");
+            const statusEl = document.getElementById("formStatus");
+            const sendBtn = document.getElementById("sendBtn");
 
-   <!-- CONTACT (wired to Google Apps Script -> Google Sheets) -->
-    <section id="contact" class="py-5">
-      <div class="container py-3">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-6">
-            <h2 class="fw-bold mb-2">Contact</h2>
-            <p class="text-secondary">This form will append a row to your Google Sheet via Apps Script.</p>
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-            <form id="contactForm" class="p-4 border rounded-4">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Name</label>
-                  <input id="name" class="form-control" placeholder="Jane Doe" required />
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Email</label>
-                  <input
-                    id="email"
-                    class="form-control"
-                    type="email"
-                    placeholder="jane@company.com"
-                    required
-                  />
-                </div>
-                <div class="col-12">
-                  <label class="form-label">What do you need?</label>
-                  <select id="need" class="form-select">
-                    <option>Security review</option>
-                    <option>Cloud modernization</option>
-                    <option>Performance tuning</option>
-                    <option>Something else</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Message</label>
-                  <textarea
-                    id="message"
-                    class="form-control"
-                    rows="4"
-                    placeholder="Tell us about your project..."
-                    required
-                  ></textarea>
-                </div>
-                <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
-                  <button id="sendBtn" class="btn btn-primary rounded-pill px-4" type="submit">
-                    Send Message
-                  </button>
-                  <div id="formStatus" class="small text-secondary"></div>
-                </div>
-              </div>
-            </form>
-          </div>
+                statusEl.textContent = "Sending...";
+                sendBtn.disabled = true;
 
-          <div class="col-lg-6">
-            <div class="p-4 p-md-5 bg-dark text-white rounded-4 h-100">
-              <h5 class="fw-semibold">Home Trust Tech</h5>
-              <p class="text-white-50 mb-4">N/A</p>
+                const payload = {
+                    name: document.getElementById("name").value.trim(),
+                    email: document.getElementById("email").value.trim(),
+                    need: document.getElementById("need").value,
+                    message: document.getElementById("message").value.trim(),
+                    page: location.href,
+                    userAgent: navigator.userAgent,
+                };
 
-              <div class="d-flex gap-3 align-items-start mb-3">
-                <i class="bi bi-geo-alt fs-4"></i>
-                <div>
-                  <div class="fw-semibold">Office</div>
-                  <div class="text-white-50">Virignia Beach, VA, USA</div>
-                </div>
-              </div>
+                try {
+                    await fetch(WEB_APP_URL, {
+                        method: "POST",
+                        mode: "no-cors", // <-- key change: avoids CORS preflight
+                        body: JSON.stringify(payload), // sent as text/plain automatically
+                    });
 
-              <div class="d-flex gap-3 align-items-start mb-3">
-                <i class="bi bi-envelope fs-4"></i>
-                <div>
-                  <div class="fw-semibold">Email</div>
-                  <div class="text-white-50">N/A</div>
-                </div>
-              </div>
-
-              <div class="d-flex gap-3 align-items-start">
-                <i class="bi bi-clock fs-4"></i>
-                <div>
-                  <div class="fw-semibold">Hours</div>
-                  <div class="text-white-50">Mon–Fri, 9am–5pm</div>
-                </div>
-              </div>
-
-              <div class="divider my-4"></div>
-
-              <div class="d-flex gap-2">
-                <a class="btn btn-outline-light rounded-pill" href="#top">
-                  <i class="bi bi-arrow-up"></i> Back to top
-                </a>
-                <a class="btn btn-outline-light rounded-pill" href="#services">Explore services</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-4 border-top">
-      <div class="container">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2">
-          <div class="text-secondary small">© <span id="year"></span> Home Trust Tech. All rights reserved.</div>
-          <div class="d-flex gap-3 small">
-            <a class="text-secondary" href="#about">About</a>
-            <a class="text-secondary" href="#pricing">Pricing</a>
-            <a class="text-secondary" href="#contact">Contact</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Bootstrap JS (bundle includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      // Footer year
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      // Close the mobile nav after clicking a link (only matters when collapsed)
-      document.querySelectorAll("#mainNav a.nav-link, #mainNav a.btn").forEach((a) => {
-        a.addEventListener("click", () => {
-          const nav = document.getElementById("mainNav");
-          if (nav.classList.contains("show")) {
-            const collapse =
-              bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, { toggle: false });
-            collapse.hide();
-          }
-        });
-      });
-
-      // ---- Contact form -> Google Apps Script Web App -> Google Sheet ----
-      const WEB_APP_URL =
-        "https://script.google.com/macros/s/AKfycbzEJJaBxgGowyKBa2OhvpcpCdCQ-Gh-9FeXIDNXXJihqtiYNOsey7EWCPyq5moeLQTfzw/exec";
-
-      const form = document.getElementById("contactForm");
-      const statusEl = document.getElementById("formStatus");
-      const sendBtn = document.getElementById("sendBtn");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        statusEl.textContent = "Sending...";
-        sendBtn.disabled = true;
-
-        const payload = {
-          name: document.getElementById("name").value.trim(),
-          email: document.getElementById("email").value.trim(),
-          need: document.getElementById("need").value,
-          message: document.getElementById("message").value.trim(),
-          page: location.href,
-          userAgent: navigator.userAgent,
-        };
-
-        try {
-          const res = await fetch(WEB_APP_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-
-          // Some Apps Script deployments return text/plain; handle both.
-          const text = await res.text();
-          let json = {};
-          try { json = JSON.parse(text); } catch { json = { ok: res.ok, raw: text }; }
-
-          if (!res.ok || !json.ok) throw new Error(json.error || "Request failed");
-
-          statusEl.textContent = "Thanks! Your message was sent.";
-          form.reset();
-        } catch (err) {
-          console.error(err);
-          statusEl.textContent = "Sorry — could not send. Please try again.";
-        } finally {
-          sendBtn.disabled = false;
-        }
-      });
-    </script>
-  </body>
+                    // With no-cors, you can't read the response (opaque),
+                    // so we optimistically show success.
+                    statusEl.textContent = "Thanks! Your message was sent.";
+                    form.reset();
+                } catch (err) {
+                    console.error(err);
+                    statusEl.textContent = "Sorry — could not send. Please try again.";
+                } finally {
+                    sendBtn.disabled = false;
+                }
+            });
+        </script>
+    </body>
 </html>
