@@ -506,43 +506,57 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+   <!-- CONTACT (wired to Google Apps Script -> Google Sheets) -->
     <section id="contact" class="py-5">
       <div class="container py-3">
         <div class="row g-4 align-items-start">
           <div class="col-lg-6">
             <h2 class="fw-bold mb-2">Contact</h2>
+            <p class="text-secondary">This form will append a row to your Google Sheet via Apps Script.</p>
 
-            <div class="p-4 border rounded-4">
+            <form id="contactForm" class="p-4 border rounded-4">
               <div class="row g-3">
                 <div class="col-md-6">
                   <label class="form-label">Name</label>
-                  <input class="form-control" placeholder="Jane Doe" />
+                  <input id="name" class="form-control" placeholder="Jane Doe" required />
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Email</label>
-                  <input class="form-control" type="email" placeholder="jane@company.com" />
+                  <input
+                    id="email"
+                    class="form-control"
+                    type="email"
+                    placeholder="jane@company.com"
+                    required
+                  />
                 </div>
                 <div class="col-12">
                   <label class="form-label">What do you need?</label>
-                  <select class="form-select">
-				    <option>IT troubleshooting</option>
-					<option>IT repair/installation</option>
-                    <option>Security assesment</option>
+                  <select id="need" class="form-select">
+                    <option>Security review</option>
+                    <option>Cloud modernization</option>
                     <option>Performance tuning</option>
                     <option>Something else</option>
                   </select>
                 </div>
                 <div class="col-12">
                   <label class="form-label">Message</label>
-                  <textarea class="form-control" rows="4" placeholder="Tell us about your project..."></textarea>
+                  <textarea
+                    id="message"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Tell us about your project..."
+                    required
+                  ></textarea>
                 </div>
-                <div class="col-12">
-                  <button class="btn btn-primary rounded-pill px-4" type="button">Send Message</button>
-                  <span class="ms-2 small text-secondary">We’ll respond within 1–2 business days.</span>
+                <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                  <button id="sendBtn" class="btn btn-primary rounded-pill px-4" type="submit">
+                    Send Message
+                  </button>
+                  <div id="formStatus" class="small text-secondary"></div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
 
           <div class="col-lg-6">
@@ -609,15 +623,63 @@
       // Footer year
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Optional UX: close the mobile nav after clicking a link (only matters when collapsed)
+      // Close the mobile nav after clicking a link (only matters when collapsed)
       document.querySelectorAll("#mainNav a.nav-link, #mainNav a.btn").forEach((a) => {
         a.addEventListener("click", () => {
           const nav = document.getElementById("mainNav");
-          if (window.getComputedStyle(nav).display !== "none" && nav.classList.contains("show")) {
-            const collapse = bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, { toggle: false });
+          if (nav.classList.contains("show")) {
+            const collapse =
+              bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, { toggle: false });
             collapse.hide();
           }
         });
+      });
+
+      // ---- Contact form -> Google Apps Script Web App -> Google Sheet ----
+      const WEB_APP_URL =
+        "https://script.google.com/macros/s/AKfycbzEJJaBxgGowyKBa2OhvpcpCdCQ-Gh-9FeXIDNXXJihqtiYNOsey7EWCPyq5moeLQTfzw/exec";
+
+      const form = document.getElementById("contactForm");
+      const statusEl = document.getElementById("formStatus");
+      const sendBtn = document.getElementById("sendBtn");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        statusEl.textContent = "Sending...";
+        sendBtn.disabled = true;
+
+        const payload = {
+          name: document.getElementById("name").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          need: document.getElementById("need").value,
+          message: document.getElementById("message").value.trim(),
+          page: location.href,
+          userAgent: navigator.userAgent,
+        };
+
+        try {
+          const res = await fetch(WEB_APP_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          // Some Apps Script deployments return text/plain; handle both.
+          const text = await res.text();
+          let json = {};
+          try { json = JSON.parse(text); } catch { json = { ok: res.ok, raw: text }; }
+
+          if (!res.ok || !json.ok) throw new Error(json.error || "Request failed");
+
+          statusEl.textContent = "Thanks! Your message was sent.";
+          form.reset();
+        } catch (err) {
+          console.error(err);
+          statusEl.textContent = "Sorry — could not send. Please try again.";
+        } finally {
+          sendBtn.disabled = false;
+        }
       });
     </script>
   </body>
