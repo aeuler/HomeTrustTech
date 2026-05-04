@@ -16,839 +16,150 @@
                 --nav-h: 76px;
                 --brand-blue: #2563eb;
                 --brand-indigo: #4f46e5;
-                --ink: #101828;
-                --muted: #667085;
             }
 
-            html {
-                scroll-behavior: smooth;
-            }
             body {
                 padding-top: var(--nav-h);
-                color: var(--ink);
-                background: #fff;
-            }
-
-            section[id] {
-                scroll-margin-top: calc(var(--nav-h) + 14px);
-            }
-
-            .navbar {
-                min-height: var(--nav-h);
-                backdrop-filter: blur(12px);
-                background: rgba(15, 23, 42, 0.96) !important;
             }
 
             .navbar-logo {
                 max-height: 48px;
-                width: auto;
-                object-fit: contain;
                 transition: transform 0.2s ease;
             }
-
             .navbar-brand:hover .navbar-logo {
-                transform: scale(1.04);
+                transform: scale(1.05);
             }
 
             .btn-primary {
                 background: linear-gradient(135deg, var(--brand-blue), var(--brand-indigo));
                 border: 0;
-                box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
-            }
-
-            .btn-primary:hover {
-                filter: brightness(1.05);
-                transform: translateY(-1px);
-            }
-
-            .btn {
-                transition:
-                    transform 0.2s ease,
-                    box-shadow 0.2s ease;
-            }
-
-            .parallax {
-                position: relative;
-                min-height: 78vh;
-                display: grid;
-                place-items: center;
-                color: #fff;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                overflow: hidden;
-            }
-
-            @media (max-width: 991.98px), (prefers-reduced-motion: reduce) {
-                .parallax {
-                    background-attachment: scroll;
-                }
-                html {
-                    scroll-behavior: auto;
-                }
-            }
-
-            .parallax::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.38), transparent 36%),
-                    linear-gradient(120deg, rgba(2, 6, 23, 0.88), rgba(15, 23, 42, 0.56));
-            }
-
-            .parallax > .content {
-                position: relative;
-                z-index: 1;
             }
 
             .hero {
-                min-height: 88vh;
+                min-height: 90vh;
+                display: grid;
+                place-items: center;
+                color: #fff;
+                background: url("https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5") center/cover no-repeat;
             }
 
             .glass {
-                backdrop-filter: blur(14px);
+                backdrop-filter: blur(10px);
                 background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.18);
+                padding: 2rem;
                 border-radius: 1.5rem;
-                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
-            }
-
-            .eyebrow {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.45rem;
-                padding: 0.45rem 0.8rem;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.12);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                color: rgba(255, 255, 255, 0.86);
-                font-size: 0.82rem;
-                font-weight: 600;
-                letter-spacing: 0.04em;
-                text-transform: uppercase;
-            }
-
-            .trust-strip {
-                margin-top: -34px;
-                position: relative;
-                z-index: 2;
-            }
-
-            .trust-card {
-                border: 0;
-                border-radius: 1.25rem;
-                box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
-            }
-
-            .feature-icon {
-                width: 3.25rem;
-                height: 3.25rem;
-                display: inline-grid;
-                place-items: center;
-                border-radius: 1rem;
-            }
-
-            .card-hover {
-                border: 1px solid rgba(16, 24, 40, 0.08);
-                border-radius: 1.35rem;
-                transition:
-                    transform 180ms ease,
-                    box-shadow 180ms ease,
-                    border-color 180ms ease;
-            }
-
-            .card-hover:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 22px 50px rgba(16, 24, 40, 0.13);
-                border-color: rgba(37, 99, 235, 0.26);
-            }
-
-            .section-kicker {
-                color: var(--brand-blue);
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                font-size: 0.78rem;
-            }
-
-            .divider {
-                height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
-            }
-
-            .divider-dark {
-                height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(16, 24, 40, 0.14), transparent);
             }
 
             .premium-form {
                 border-radius: 1.5rem;
-                border: 1px solid rgba(16, 24, 40, 0.08);
-                box-shadow: 0 26px 70px rgba(16, 24, 40, 0.14);
-            }
-
-            .form-control,
-            .form-select {
-                border-radius: 0.9rem;
-                border-color: #d0d5dd;
-            }
-
-            .form-control:focus,
-            .form-select:focus {
-                border-color: var(--brand-blue);
-                box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.12);
-            }
-
-            footer a {
-                text-decoration: none;
-            }
-
-            @media (max-width: 575.98px) {
-                .hero h1 {
-                    font-size: 2.35rem;
-                }
-                .navbar-logo {
-                    max-height: 42px;
-                }
-                .trust-strip {
-                    margin-top: 0;
-                }
+                box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
             }
         </style>
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom border-light border-opacity-10">
+        <!-- NAV -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand fw-semibold d-flex align-items-center" href="#top">
-                    <img src="hometrustlogo.png" alt="Home Trust Tech Logo" class="navbar-logo me-2" />
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="hometrustlogo.png" class="navbar-logo me-2" />
                     <span>Home Trust Tech</span>
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 py-2 py-lg-0">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">Why Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#work">Results</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                        <li class="nav-item ms-lg-2">
-                            <a class="btn btn-primary btn-sm rounded-pill px-4 mt-2 mt-lg-0" href="#contact">
-                                Get Help
-                            </a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <header
-            id="top"
-            class="parallax hero"
-            style="
-                background-image: url(&quot;https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=2400&q=70&quot;);
-            "
-        >
-            <div class="content container py-5">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-8">
-                        <div class="p-4 p-md-5 glass">
-                            <div class="eyebrow mb-3">
-                                <i class="bi bi-shield-check"></i>
-                                Security • Troubleshooting • Consulting
-                            </div>
-
-                            <h1 class="display-4 fw-bold mb-3">
-                                Reliable tech help for your home, without the confusing jargon.
-                            </h1>
-
-                            <p class="lead mb-4 text-white-75">
-                                Home Trust Tech helps with setup, repair, troubleshooting, and security guidance so your
-                                devices, Wi-Fi, and accounts work the way they should.
-                            </p>
-
-                            <div class="d-flex flex-wrap gap-3">
-                                <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-4">
-                                    Request Help Today
-                                </a>
-                                <a href="#services" class="btn btn-outline-light btn-lg rounded-pill px-4">
-                                    View Services
-                                </a>
-                            </div>
-
-                            <div class="row g-3 mt-4">
-                                <div class="col-6 col-md-3">
-                                    <div class="small text-white-50">Local Service</div>
-                                    <div class="h5 fw-bold mb-0">Virginia Beach</div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="small text-white-50">Plain English</div>
-                                    <div class="h5 fw-bold mb-0">No Jargon</div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="small text-white-50">Support</div>
-                                    <div class="h5 fw-bold mb-0">Fast Reply</div>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <div class="small text-white-50">Focus</div>
-                                    <div class="h5 fw-bold mb-0">Trust First</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <div class="glass p-4">
-                            <h5 class="fw-semibold mb-3">Common issues we solve</h5>
-                            <div class="d-grid gap-3 small">
-                                <div><i class="bi bi-wifi me-2"></i>Wi-Fi and router problems</div>
-                                <div><i class="bi bi-laptop me-2"></i>Computer setup and cleanup</div>
-                                <div><i class="bi bi-printer me-2"></i>Printer and device setup</div>
-                                <div><i class="bi bi-key me-2"></i>Password and account safety</div>
-                                <div><i class="bi bi-shield-lock me-2"></i>Basic security reviews</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- HERO -->
+        <section class="hero text-center">
+            <div class="glass">
+                <h1 class="display-4 fw-bold">Reliable Tech Help</h1>
+                <p class="lead">Setup • Repair • Security</p>
+                <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-4">Get Help</a>
             </div>
-        </header>
+        </section>
 
-        <div class="trust-strip">
-            <div class="container">
-                <div class="card trust-card">
-                    <div class="card-body p-4">
-                        <div class="row g-3 text-center">
-                            <div class="col-md-4">
-                                <div class="fw-bold">Clear explanations</div>
-                                <div class="text-secondary small">Understand what was fixed and why.</div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fw-bold">Practical recommendations</div>
-                                <div class="text-secondary small">Only what you actually need.</div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="fw-bold">Home-friendly support</div>
-                                <div class="text-secondary small">Built for families, students, and small offices.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <!-- SERVICES -->
         <section id="services" class="py-5">
-            <div class="container py-4">
-                <div class="row align-items-end g-3 mb-4">
-                    <div class="col-lg-7">
-                        <div class="section-kicker mb-2">Services</div>
-                        <h2 class="fw-bold mb-2">Tech support that feels personal.</h2>
-                        <p class="text-secondary mb-0">
-                            Choose the type of help you need, then send a quick request so we can point you in the right
-                            direction.
-                        </p>
-                    </div>
-                    <div class="col-lg-5 text-lg-end">
-                        <a class="btn btn-outline-dark rounded-pill px-4" href="#contact">Request a Quote</a>
-                    </div>
-                </div>
+            <div class="container">
+                <h2 class="fw-bold mb-4">Services</h2>
 
                 <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 card-hover">
-                            <div class="card-body p-4">
-                                <div class="feature-icon bg-primary-subtle text-primary mb-3">
-                                    <i class="bi bi-shield-lock fs-4"></i>
-                                </div>
-                                <h5 class="fw-semibold">Security Consulting</h5>
-                                <p class="text-secondary">
-                                    Simple, understandable guidance for safer accounts, devices, passwords, and home
-                                    networks.
-                                </p>
-                                <ul class="small text-secondary mb-0">
-                                    <li>Basic risk assessment</li>
-                                    <li>Password and account safety</li>
-                                    <li>Home network recommendations</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 card-hover">
-                            <div class="card-body p-4">
-                                <div class="feature-icon bg-success-subtle text-success mb-3">
-                                    <i class="bi bi-tools fs-4"></i>
-                                </div>
-                                <h5 class="fw-semibold">IT Troubleshooting</h5>
-                                <p class="text-secondary">
-                                    Help diagnosing common computer, internet, device, software, and performance
-                                    problems.
-                                </p>
-                                <ul class="small text-secondary mb-0">
-                                    <li>Basic troubleshooting</li>
-                                    <li>Device diagnostics</li>
-                                    <li>Repair or replacement guidance</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 card-hover">
-                            <div class="card-body p-4">
-                                <div class="feature-icon bg-warning-subtle text-warning mb-3">
-                                    <i class="bi bi-router fs-4"></i>
-                                </div>
-                                <h5 class="fw-semibold">Setup & Installation</h5>
-                                <p class="text-secondary">
-                                    Get help setting up new devices, printers, Wi-Fi equipment, software, and basic
-                                    smart home tech.
-                                </p>
-                                <ul class="small text-secondary mb-0">
-                                    <li>New device setup</li>
-                                    <li>Printer and Wi-Fi setup</li>
-                                    <li>Software installation help</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-md-4"><div class="card p-4">Security Consulting</div></div>
+                    <div class="col-md-4"><div class="card p-4">IT Troubleshooting</div></div>
+                    <div class="col-md-4"><div class="card p-4">Setup & Install</div></div>
                 </div>
             </div>
         </section>
 
-        <section
-            class="parallax"
-            style="
-                min-height: 45vh;
-                background-image: url(&quot;https://images.unsplash.com/photo-1526378722370-6f4c6e8b9d8b?auto=format&fit=crop&w=2400&q=70&quot;);
-            "
-        >
-            <div class="content container text-center py-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="fw-bold mb-3">Stop guessing. Get clear, trustworthy tech help.</h2>
-                        <p class="lead text-white-75 mb-4">
-                            We focus on practical fixes, honest guidance, and clear next steps.
-                        </p>
-                        <a href="#contact" class="btn btn-light btn-lg rounded-pill px-4">Start a Request</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-5 bg-light">
-            <div class="container py-4">
-                <div class="row g-4 align-items-center">
-                    <div class="col-lg-6">
-                        <div class="section-kicker mb-2">Why Home Trust Tech</div>
-                        <h2 class="fw-bold">Built for people who want answers, not tech jargon.</h2>
-                        <p class="text-secondary">
-                            We listen first, explain clearly, and recommend practical steps that fit your needs. Whether
-                            you are setting up a new device or trying to secure your accounts, we make the process
-                            easier to understand.
-                        </p>
-
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <div class="p-3 bg-white border rounded-4 h-100">
-                                    <div class="fw-semibold mb-1">
-                                        <i class="bi bi-people me-2 text-primary"></i>Personal support
-                                    </div>
-                                    <div class="text-secondary small">You get direct, clear communication.</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="p-3 bg-white border rounded-4 h-100">
-                                    <div class="fw-semibold mb-1">
-                                        <i class="bi bi-check2-circle me-2 text-primary"></i>Outcome-driven
-                                    </div>
-                                    <div class="text-secondary small">We focus on what actually solves the issue.</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="p-3 bg-white border rounded-4 h-100">
-                                    <div class="fw-semibold mb-1">
-                                        <i class="bi bi-calendar-check me-2 text-primary"></i>Flexible scheduling
-                                    </div>
-                                    <div class="text-secondary small">Support that fits around your day.</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="p-3 bg-white border rounded-4 h-100">
-                                    <div class="fw-semibold mb-1">
-                                        <i class="bi bi-shield-check me-2 text-primary"></i>Security-first
-                                    </div>
-                                    <div class="text-secondary small">Safer defaults whenever possible.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
-                            <img
-                                alt="Technology support"
-                                class="img-fluid"
-                                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70"
-                            />
-                            <div class="card-body p-4">
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">Setup</span>
-                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">Troubleshooting</span>
-                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">Security</span>
-                                    <span class="badge text-bg-dark rounded-pill px-3 py-2">Consulting</span>
-                                </div>
-                                <p class="text-secondary mt-3 mb-0">
-                                    Local help designed around trust, clarity, and practical solutions.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="work" class="py-5">
-            <div class="container py-4">
-                <div class="text-center mb-4">
-                    <div class="section-kicker mb-2">Results</div>
-                    <h2 class="fw-bold mb-2">Common ways we help.</h2>
-                    <p class="text-secondary mb-0">Simple examples of outcomes customers usually want.</p>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-lg-4">
-                        <div class="card h-100 card-hover">
-                            <div class="card-body p-4">
-                                <span class="badge text-bg-primary rounded-pill mb-3">Security</span>
-                                <h5 class="fw-semibold">Account Safety Cleanup</h5>
-                                <p class="text-secondary mb-0">
-                                    Review passwords, recovery options, device access, and safer login habits.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="card h-100 card-hover">
-                            <div class="card-body p-4">
-                                <span class="badge text-bg-success rounded-pill mb-3">Troubleshooting</span>
-                                <h5 class="fw-semibold">Slow Computer Diagnosis</h5>
-                                <p class="text-secondary mb-0">
-                                    Identify common causes of slowness and recommend repair, cleanup, or replacement
-                                    options.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="card h-100 card-hover">
-                            <div class="card-body p-4">
-                                <span class="badge text-bg-warning rounded-pill mb-3">Setup</span>
-                                <h5 class="fw-semibold">Home Wi-Fi Setup</h5>
-                                <p class="text-secondary mb-0">
-                                    Help improve reliability, placement, device connections, and basic router settings.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="py-5 bg-light">
-            <div class="container py-4">
-                <div class="text-center mb-4">
-                    <div class="section-kicker mb-2">Pricing</div>
-                    <h2 class="fw-bold mb-2">Simple starting points.</h2>
-                    <p class="text-secondary mb-0">
-                        Final pricing depends on scope, but this gives you a clear place to start.
-                    </p>
-                </div>
-
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm rounded-4">
-                            <div class="card-body p-4">
-                                <h5 class="fw-semibold">Starter</h5>
-                                <div class="display-6 fw-bold my-3">$50</div>
-                                <ul class="text-secondary">
-                                    <li>One issue or setup need</li>
-                                    <li>Basic review</li>
-                                    <li>Clear next steps</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100 rounded-pill">Choose Starter</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 border-0 shadow-lg rounded-4 position-relative">
-                            <div class="position-absolute top-0 start-50 translate-middle">
-                                <span class="badge text-bg-primary rounded-pill px-3 py-2">Most Popular</span>
-                            </div>
-                            <div class="card-body p-4 pt-5">
-                                <h5 class="fw-semibold">Growth</h5>
-                                <div class="display-6 fw-bold my-3">$100</div>
-                                <ul class="text-secondary">
-                                    <li>Multi-area review</li>
-                                    <li>Troubleshooting support</li>
-                                    <li>Implementation guidance</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-primary w-100 rounded-pill">Choose Growth</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm rounded-4">
-                            <div class="card-body p-4">
-                                <h5 class="fw-semibold">Custom</h5>
-                                <div class="display-6 fw-bold my-3">Quote</div>
-                                <ul class="text-secondary">
-                                    <li>Multiple devices</li>
-                                    <li>Security + setup</li>
-                                    <li>Ongoing support options</li>
-                                </ul>
-                                <a href="#contact" class="btn btn-outline-dark w-100 rounded-pill">Talk to Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- CONTACT -->
         <section id="contact" class="py-5 bg-light">
-            <div class="container py-4">
-                <div class="row justify-content-center text-center mb-4">
-                    <div class="col-lg-8">
-                        <div class="section-kicker mb-2">Contact</div>
-                        <h2 class="fw-bold mb-2">Tell us what you need help with.</h2>
-                        <p class="text-secondary mb-0">
-                            Send a quick request and we’ll respond with a clear next step.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row g-4 align-items-stretch">
+            <div class="container">
+                <div class="row g-4">
                     <div class="col-lg-7">
-                        <div class="bg-white premium-form h-100 p-4 p-md-5">
-                            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-4">
-                                <div>
-                                    <h5 class="fw-semibold mb-1">Request help</h5>
-                                    <p class="text-secondary mb-0 small">Most replies within 1 business day.</p>
-                                </div>
-                                <div class="d-flex align-items-center gap-2 small text-secondary">
-                                    <i class="bi bi-shield-check text-primary"></i>
-                                    <span>No spam. Just solutions.</span>
-                                </div>
-                            </div>
+                        <div class="bg-white premium-form p-5">
+                            <form id="contactForm" action="https://formspree.io/f/mvzlkdkl" method="POST">
+                                <input type="hidden" name="_subject" value="New Home Trust Tech Lead" />
 
-                            <!-- modify this form HTML and place wherever you want your form -->
-                            <form action="https://formspree.io/f/mvzlkdkl" method="POST">
-                                <label>
-                                    Your email:
-                                    <input type="email" name="email" />
-                                </label>
-                                <label>
-                                    Your message:
-                                    <textarea name="message"></textarea>
-                                </label>
-                                <!-- your other form fields go here -->
-                                <button type="submit">Send</button>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <input
+                                            name="name"
+                                            class="form-control form-control-lg"
+                                            placeholder="Name"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="Email"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="col-12">
+                                        <textarea
+                                            name="message"
+                                            class="form-control"
+                                            rows="5"
+                                            placeholder="Message"
+                                            required
+                                        ></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary btn-lg rounded-pill px-4">Send Message</button>
+                                    </div>
+                                </div>
                             </form>
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        class="form-control form-control-lg"
-                                        placeholder="Jane Doe"
-                                        required
-                                    />
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        class="form-control form-control-lg"
-                                        type="email"
-                                        placeholder="jane@company.com"
-                                        required
-                                    />
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="need" class="form-label">What do you need?</label>
-                                    <select id="need" name="need" class="form-select form-select-lg">
-                                        <option value="IT troubleshooting">IT troubleshooting</option>
-                                        <option value="Security consulting">Security consulting</option>
-                                        <option value="Setup / installation">Setup / installation</option>
-                                        <option value="Pricing question">Pricing question</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        class="form-control"
-                                        rows="5"
-                                        placeholder="Tell us what’s going on, what device or service is involved, and how soon you need help..."
-                                        required
-                                    ></textarea>
-                                </div>
-
-                                <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
-                                    <button class="btn btn-primary btn-lg rounded-pill px-4" type="submit">
-                                        Send Message
-                                    </button>
-                                    <span class="small text-secondary">
-                                        You’ll see a confirmation after submitting.
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="divider-dark my-4"></div>
-
-                            <div class="row g-3 small">
-                                <div class="col-md-4">
-                                    <div class="d-flex gap-2 align-items-start">
-                                        <i class="bi bi-chat-dots text-primary"></i>
-                                        <div>
-                                            <div class="fw-semibold">Clear communication</div>
-                                            <div class="text-secondary">No jargon, just answers.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="d-flex gap-2 align-items-start">
-                                        <i class="bi bi-clock text-primary"></i>
-                                        <div>
-                                            <div class="fw-semibold">Fast response</div>
-                                            <div class="text-secondary">Usually within 24 hours.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="d-flex gap-2 align-items-start">
-                                        <i class="bi bi-house-check text-primary"></i>
-                                        <div>
-                                            <div class="fw-semibold">Home-friendly</div>
-                                            <div class="text-secondary">Built for real people.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
                     <div class="col-lg-5">
-                        <div class="bg-dark text-white shadow-lg rounded-4 h-100 p-4 p-md-5">
-                            <h5 class="fw-semibold mb-2">Home Trust Tech</h5>
-                            <p class="text-white-50 mb-4">
-                                Local, reliable help for setup, repair, troubleshooting, and security guidance.
-                            </p>
-
-                            <div class="d-flex gap-3 align-items-start mb-3">
-                                <i class="bi bi-geo-alt fs-4"></i>
-                                <div>
-                                    <div class="fw-semibold">Service Area</div>
-                                    <div class="text-white-50">Virginia Beach, VA</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex gap-3 align-items-start mb-3">
-                                <i class="bi bi-envelope fs-4"></i>
-                                <div>
-                                    <div class="fw-semibold">Email</div>
-                                    <div class="text-white-50">hometrusttech@gmail.com</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex gap-3 align-items-start mb-3">
-                                <i class="bi bi-telephone fs-4"></i>
-                                <div>
-                                    <div class="fw-semibold">Phone</div>
-                                    <div class="text-white-50">(757) 512-8704</div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex gap-3 align-items-start mb-4">
-                                <i class="bi bi-clock fs-4"></i>
-                                <div>
-                                    <div class="fw-semibold">Hours</div>
-                                    <div class="text-white-50">Mon–Fri, 9am–5pm</div>
-                                </div>
-                            </div>
-
-                            <div class="divider my-4"></div>
-
-                            <div class="p-3 rounded-4 bg-white bg-opacity-10">
-                                <div class="fw-semibold mb-1">What to include</div>
-                                <ul class="mb-0 text-white-50">
-                                    <li>Device type or service involved</li>
-                                    <li>What changed recently</li>
-                                    <li>Any error messages</li>
-                                    <li>Deadline or urgency</li>
-                                </ul>
-                            </div>
-
-                            <div class="d-flex gap-2 mt-4 flex-wrap">
-                                <a class="btn btn-outline-light rounded-pill" href="#top">
-                                    <i class="bi bi-arrow-up"></i> Back to top
-                                </a>
-                                <a class="btn btn-outline-light rounded-pill" href="#services">Explore services</a>
-                            </div>
+                        <div class="bg-dark text-white p-5 rounded-4 h-100">
+                            <h5>Home Trust Tech</h5>
+                            <p>Virginia Beach, VA</p>
+                            <p>Email: hometrusttech@gmail.com</p>
+                            <p>Phone: (757) 512-8704</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="py-4 border-top">
-            <div class="container">
-                <div
-                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2"
-                >
-                    <div class="text-secondary small">
-                        © <span id="year"></span> Home Trust Tech. All rights reserved.
-                    </div>
-                    <div class="d-flex gap-3 small">
-                        <a class="text-secondary" href="#about">Why Us</a>
-                        <a class="text-secondary" href="#pricing">Pricing</a>
-                        <a class="text-secondary" href="#contact">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-        <script>
-            document.getElementById("year").textContent = new Date().getFullYear();
-
-            document.querySelectorAll("#mainNav a.nav-link, #mainNav a.btn").forEach((a) => {
-                a.addEventListener("click", () => {
-                    const nav = document.getElementById("mainNav");
-                    if (nav.classList.contains("show")) {
-                        const collapse =
-                            bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, { toggle: false });
-                        collapse.hide();
-                    }
-                });
-            });
-        </script>
     </body>
 </html>
