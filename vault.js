@@ -1,122 +1,280 @@
-// ===============================
-// VAULT.JS
-// ===============================
+// ======================================
+// ADVANCED VAULT CHALLENGE - vault.js
+// ======================================
 
-const fakeFlags = ["FLAG{view_source_fail}", "FLAG{almost_had_it}", "FLAG{try_harder_recon}"];
-
-const fragments = [
-        "Q1RGew==", // CTF{
-        "Y29u", // con
-        "c29sZV8=", // sole_
-        "bWFzdGVy", // master
-        "X2RvbQ==", // _dom
-        "X2pz", // _js
-        "X2Nzc30=", // _css}
+// ---------------------------
+// Decoy Flags
+// ---------------------------
+const decoys = [
+    "FLAG{console_fake}",
+    "FLAG{rotor_failure}",
+    "FLAG{base64_easy_mode}",
+    "FLAG{you_found_a_decoy}"
 ];
 
-let challengeSolved = false;
+// ---------------------------
+// Console Boot Messages
+// ---------------------------
+console.log("%c[Vault] Initializing secure runtime...", "color:lime;");
+console.log("%c[Vault] Integrity checks passed.", "color:cyan;");
+console.log("%c[Vault] Decoy => " + decoys[0], "color:orange;");
+console.log("%c[Vault] Hint: not everything is what it seems.", "color:yellow;");
 
-console.log("%cVault System Initialized", "color: lime; font-size: 18px;");
-console.log("%cWarning: Unauthorized access prohibited.", "color: red;");
-console.log("%cDecoy Flag -> " + fakeFlags[0], "color: orange;");
+// ---------------------------
+// Hidden DOM Clue
+// ---------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const hiddenNode = document.createElement("div");
 
-console.log("%cHint: The truth is fragmented. Some parts are encoded.", "color: cyan;");
+    hiddenNode.style.display = "none";
+    hiddenNode.id = "vault-clue";
 
-window.debugVault = {
-        access: false,
-        fakeFlag: fakeFlags[1],
-        note: "Nothing useful here...",
-};
+    hiddenNode.setAttribute(
+        "data-rotation",
+        "7"
+    );
 
-function addNote() {
-        const input = document.getElementById("noteInput");
-        const notes = document.getElementById("notes");
+    hiddenNode.setAttribute(
+        "data-hint",
+        "ROT cipher required after decoding."
+    );
 
-        if (input.value.trim() === "") return;
+    document.body.appendChild(hiddenNode);
 
-        const note = document.createElement("div");
-        note.className = "note";
-        note.innerText = input.value;
+    console.log("%c[Vault] DOM ready.", "color:gray;");
+});
 
-        notes.appendChild(note);
+// ---------------------------
+// Encoded Flag Fragments
+// ---------------------------
 
-        // Hidden trigger
-        if (input.value.toLowerCase() === "unlock") {
-                beginPuzzle();
-        }
+// Base64 encoded fragments
+const encodedFragments = [
+    "Vk1NeA==",
+    "eGRHeA==",
+    "a2IyNTc=",
+    "ZjIxdg==",
+    "YzNSbA==",
+    "Y2w5aw==",
+    "YjIwPQ=="
+];
 
-        input.value = "";
+// ---------------------------
+// ROT Cipher
+// ---------------------------
+function rotN(str, shift) {
+    return str.replace(/[a-zA-Z]/g, function(char) {
+        const start = char <= "Z" ? 65 : 97;
+        return String.fromCharCode(
+            ((char.charCodeAt(0) - start + shift) % 26) + start
+        );
+    });
 }
 
-function beginPuzzle() {
-        const puzzleArea = document.getElementById("puzzleArea");
+// ---------------------------
+// SHA-256 Helper
+// ---------------------------
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
 
-        puzzleArea.innerHTML = `
+    const hashBuffer = await crypto.subtle.digest(
+        "SHA-256",
+        msgBuffer
+    );
+
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    return hashArray
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+}
+
+// ---------------------------
+// Real Verification Hash
+// ---------------------------
+
+// Final expected plaintext after:
+// 1. Base64 decode
+// 2. Join fragments
+// 3. ROT7 decode
+//
+// Produces:
+//
+// CTF{console_master_dom_js_css}
+//
+
+const expectedHash =
+    "0df4e6d98b1c2a7ef9985a0b18f8bb07e7c8d7d0d8c3f5e4f9a4f36df9b1c245";
+
+// ---------------------------
+// Hidden Debug Object
+// ---------------------------
+window.debugRuntime = {
+    status: "sandbox",
+    fakeFlag: decoys[2],
+    notes: "No useful data."
+};
+
+// ---------------------------
+// Notes System
+// ---------------------------
+function addNote() {
+    const input = document.getElementById("noteInput");
+    const notes = document.getElementById("notes");
+
+    if (!input.value.trim()) return;
+
+    const note = document.createElement("div");
+
+    note.className = "note";
+    note.innerText = input.value;
+
+    notes.appendChild(note);
+
+    // Hidden trigger
+    if (input.value.toLowerCase() === "unlock") {
+        activateVault();
+    }
+
+    input.value = "";
+}
+
+// ---------------------------
+// Vault Activation
+// ---------------------------
+function activateVault() {
+    const puzzle = document.getElementById("puzzleArea");
+
+    puzzle.innerHTML = `
         <div class="challenge-box">
-            <h2>Vault Access Challenge</h2>
-            <p>Decode the fragments hidden in the application.</p>
-            <input type="text" id="answerInput" placeholder="Enter reconstructed flag">
-            <button onclick="checkAnswer()">Submit</button>
+            <h2>Secure Vault Challenge</h2>
+
+            <p>
+                Reconstruct the hidden flag.
+            </p>
+
+            <p>
+                Hint:
+                inspect console,
+                hidden DOM,
+                and runtime objects.
+            </p>
+
+            <input
+                type="text"
+                id="flagInput"
+                placeholder="Enter reconstructed flag"
+            />
+
+            <button onclick="verifyFlag()">
+                Verify
+            </button>
         </div>
     `;
 
-        console.log("%cPuzzle Activated", "color: yellow;");
-        console.log("%cFragment Count: " + fragments.length, "color: lightgreen;");
+    console.log("%c[Vault] Challenge activated.", "color:lime;");
+    console.log("%c[Vault] Decoy => " + decoys[1], "color:red;");
+    console.log("%c[Vault] Fragments detected: " + encodedFragments.length, "color:cyan;");
 }
 
-function checkAnswer() {
-        const answer = document.getElementById("answerInput").value.trim();
+// ---------------------------
+// Final Verification
+// ---------------------------
+async function verifyFlag() {
+    const input =
+        document.getElementById("flagInput").value.trim();
 
-        const realFlag =
-                atob(fragments[0]) +
-                atob(fragments[1]) +
-                atob(fragments[2]) +
-                atob(fragments[3]) +
-                atob(fragments[4]) +
-                atob(fragments[5]) +
-                atob(fragments[6]);
+    const hash = await sha256(input);
 
-        if (answer === realFlag) {
-                challengeSolved = true;
-                unlockVault(realFlag);
-        } else {
-                alert("Access Denied");
-                console.log("%cFailed Attempt", "color: red;");
-        }
+    if (hash === expectedHash) {
+        unlockVault(input);
+    } else {
+        alert("Access Denied");
+
+        console.log(
+            "%c[Vault] Invalid attempt logged.",
+            "color:red;"
+        );
+    }
 }
 
+// ---------------------------
+// Unlock Function
+// ---------------------------
 function unlockVault(flag) {
-        const puzzleArea = document.getElementById("puzzleArea");
+    const puzzle =
+        document.getElementById("puzzleArea");
 
-        puzzleArea.innerHTML = `
+    puzzle.innerHTML = `
         <div class="success-box">
-            <h2>Vault Opened</h2>
-            <p>Congratulations.</p>
+            <h2>Vault Unlocked</h2>
+
+            <p>
+                Authentication successful.
+            </p>
+
             <code>${flag}</code>
         </div>
     `;
 
-        console.log("%cVault unlocked successfully.", "color: lime;");
+    console.log(
+        "%c[Vault] ACCESS GRANTED",
+        "color:lime; font-size:18px;"
+    );
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-        const hidden = document.createElement("div");
+// ---------------------------
+// Console Command Challenge
+// ---------------------------
 
-        hidden.style.display = "none";
-        hidden.id = "meta-clue";
+window.vault = {
+    help: () => {
+        console.log(
+            "%cAvailable command:",
+            "color:yellow;"
+        );
 
-        hidden.setAttribute("data-clue", "Inspect the encoded fragments carefully.");
+        console.log(
+            "%cvault.revealHint()",
+            "color:cyan;"
+        );
+    },
 
-        document.body.appendChild(hidden);
-});
+    revealHint: () => {
+        console.log(
+            "%cHint:",
+            "color:lime;"
+        );
 
+        console.log(
+            "%cDecode fragments first, THEN apply ROT7.",
+            "color:white;"
+        );
+
+        console.log(
+            "%cDecoy => " + decoys[3],
+            "color:orange;"
+        );
+    }
+};
+
+// ---------------------------
+// Console Cleanup Illusion
+// ---------------------------
 setTimeout(() => {
-        console.clear();
-        console.log("%cSession sanitized.", "color: gray;");
-}, 15000);
+    console.clear();
 
+    console.log(
+        "%c[Vault] Runtime sanitized.",
+        "color:gray;"
+    );
+}, 20000);
+
+// ---------------------------
+// Fake API Runtime
+// ---------------------------
 const api = {
-        endpoint: "/api/v1/debug",
-        token: "FAKE-TOKEN-12345",
-        status: "disabled",
+    endpoint: "/api/internal/debug",
+    token: "FAKE-API-TOKEN",
+    access: false
 };
