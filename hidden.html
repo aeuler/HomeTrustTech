@@ -1,313 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Note Vault</title>
-        <style>
-            :root {
-                --accent-name: blue;
-                --bg-1: #0f172a;
-                --bg-2: #172554;
-                --card: rgba(255, 255, 255, 0.1);
-                --card-strong: rgba(255, 255, 255, 0.16);
-                --text: #f8fafc;
-                --muted: #cbd5e1;
-                --line: rgba(255, 255, 255, 0.18);
-                --accent: #38bdf8;
-                --accent-2: #818cf8;
-                --danger: #f97316;
-                --success: #34d399;
-            }
 
+        <title>Secure Notes Vault</title>
+
+        <style>
             * {
                 box-sizing: border-box;
             }
 
             body {
-                min-height: 100vh;
                 margin: 0;
-                font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                color: var(--text);
-                background:
-                    radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 32rem),
-                    radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.3), transparent 34rem),
-                    linear-gradient(135deg, var(--bg-1), var(--bg-2));
-                display: grid;
-                place-items: center;
-                padding: 32px 16px;
+                padding: 0;
+                min-height: 100vh;
+
+                background: radial-gradient(circle at top left, #1e293b, #020617);
+
+                font-family: Arial, sans-serif;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                color: white;
             }
 
-            .shell {
-                width: min(1120px, 100%);
+            .app-container {
+                width: 95%;
+                max-width: 1100px;
+
+                background: rgba(15, 23, 42, 0.92);
+
+                border: 1px solid rgba(255, 255, 255, 0.08);
+
+                border-radius: 16px;
+
+                padding: 30px;
+
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+
+                backdrop-filter: blur(8px);
+            }
+
+            .topbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                margin-bottom: 25px;
+            }
+
+            .topbar h1 {
+                margin: 0;
+                font-size: 28px;
+                color: #38bdf8;
+            }
+
+            .status {
+                font-size: 14px;
+                color: #94a3b8;
+            }
+
+            .note-panel {
                 display: grid;
-                grid-template-columns: 1.15fr 0.85fr;
-                gap: 24px;
+                grid-template-columns: 1fr 1fr;
+                gap: 25px;
             }
 
             .panel {
-                border: 1px solid var(--line);
-                background: var(--card);
-                border-radius: 28px;
-                box-shadow: 0 24px 80px rgba(2, 6, 23, 0.38);
-                backdrop-filter: blur(18px);
-                overflow: hidden;
-            }
+                background: rgba(255, 255, 255, 0.03);
 
-            .hero {
-                padding: 34px;
-            }
+                border: 1px solid rgba(255, 255, 255, 0.05);
 
-            .eyebrow {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                color: var(--muted);
-                font-size: 13px;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-            }
+                border-radius: 12px;
 
-            .pulse {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: var(--success);
-                box-shadow: 0 0 0 8px rgba(52, 211, 153, 0.12);
-                cursor: pointer;
-            }
-
-            h1 {
-                margin: 18px 0 10px;
-                font-size: clamp(36px, 5vw, 68px);
-                line-height: 0.95;
-                letter-spacing: -0.055em;
-            }
-
-            .lead {
-                margin: 0 0 28px;
-                max-width: 60ch;
-                color: var(--muted);
-                font-size: 17px;
-                line-height: 1.65;
-            }
-
-            .composer {
-                display: grid;
-                gap: 12px;
+                padding: 20px;
             }
 
             textarea {
                 width: 100%;
-                min-height: 130px;
-                color: var(--text);
-                background: rgba(15, 23, 42, 0.62);
-                border: 1px solid var(--line);
-                border-radius: 20px;
-                padding: 18px;
-                resize: vertical;
+                height: 130px;
+
+                background: #0f172a;
+
+                border: 1px solid #334155;
+
+                color: white;
+
+                border-radius: 10px;
+
+                padding: 15px;
+
+                resize: none;
+
+                font-size: 15px;
+            }
+
+            textarea:focus,
+            input:focus {
                 outline: none;
-                font: inherit;
-                line-height: 1.5;
-            }
-
-            textarea:focus {
-                border-color: rgba(56, 189, 248, 0.75);
-                box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
-            }
-
-            .actions {
-                display: grid;
-                grid-template-columns: 1fr auto;
-                gap: 12px;
+                border-color: #38bdf8;
             }
 
             button {
-                border: 0;
-                border-radius: 18px;
-                padding: 14px 18px;
-                color: #020617;
-                background: linear-gradient(135deg, var(--accent), var(--accent-2));
-                font-weight: 800;
+                margin-top: 15px;
+
+                width: 100%;
+
+                padding: 12px;
+
+                border: none;
+
+                border-radius: 10px;
+
+                background: linear-gradient(135deg, #0ea5e9, #2563eb);
+
+                color: white;
+
+                font-size: 15px;
+
                 cursor: pointer;
-                transition: transform 160ms ease, filter 160ms ease;
+
+                transition: 0.2s;
             }
 
             button:hover {
-                transform: translateY(-1px);
-                filter: brightness(1.06);
-            }
-
-            .ghost {
-                color: var(--text);
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid var(--line);
+                transform: translateY(-2px);
+                opacity: 0.95;
             }
 
             .notes {
-                display: grid;
-                gap: 12px;
-                margin-top: 24px;
+                margin-top: 20px;
             }
 
             .note {
-                border: 1px solid var(--line);
-                border-radius: 18px;
-                background: rgba(255, 255, 255, 0.09);
-                padding: 14px 16px;
+                background: rgba(255, 255, 255, 0.05);
+
+                border-left: 3px solid #38bdf8;
+
+                padding: 12px;
+
+                margin-bottom: 10px;
+
+                border-radius: 8px;
+
                 color: #e2e8f0;
-                overflow-wrap: anywhere;
             }
 
-            .note strong {
+            .challenge-box,
+            .success-box {
+                margin-top: 20px;
+
+                background: rgba(255, 255, 255, 0.04);
+
+                border: 1px solid rgba(255, 255, 255, 0.06);
+
+                border-radius: 12px;
+
+                padding: 20px;
+            }
+
+            .challenge-box h2,
+            .success-box h2 {
+                margin-top: 0;
+                color: #38bdf8;
+            }
+
+            input {
+                width: 100%;
+
+                margin-top: 10px;
+
+                padding: 12px;
+
+                border-radius: 10px;
+
+                border: 1px solid #334155;
+
+                background: #0f172a;
+
                 color: white;
             }
 
-            .sidebar {
-                display: grid;
-                gap: 24px;
-            }
-
-            .card {
-                padding: 26px;
-            }
-
-            .card h2 {
-                margin: 0 0 12px;
-                font-size: 20px;
-            }
-
-            .meter {
-                height: 12px;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.1);
-                overflow: hidden;
-                margin: 18px 0 14px;
-            }
-
-            .meter span {
+            code {
                 display: block;
-                height: 100%;
-                width: 0%;
-                background: linear-gradient(90deg, var(--accent), var(--success));
-                transition: width 220ms ease;
+
+                margin-top: 15px;
+
+                padding: 15px;
+
+                border-radius: 10px;
+
+                background: black;
+
+                color: lime;
+
+                overflow-wrap: anywhere;
             }
 
-            .hint-grid {
-                display: grid;
-                gap: 10px;
-                margin-top: 18px;
+            .footer {
+                margin-top: 25px;
+
+                text-align: center;
+
+                color: #64748b;
+
+                font-size: 13px;
             }
 
-            .hint {
-                border: 1px solid var(--line);
-                border-radius: 16px;
-                padding: 12px;
-                background: rgba(15, 23, 42, 0.32);
-                color: var(--muted);
-                font-size: 14px;
-            }
-
-            .hint b {
-                color: var(--text);
-            }
-
-            .status {
-                display: flex;
-                justify-content: space-between;
-                gap: 10px;
-                color: var(--muted);
-                font-size: 14px;
-            }
-
-            .tag-row {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                margin-top: 14px;
-            }
-
-            .tag {
-                border: 1px solid var(--line);
-                border-radius: 999px;
-                padding: 7px 10px;
-                color: var(--muted);
-                font-size: 12px;
-                background: rgba(255, 255, 255, 0.08);
-            }
-
-            .locked {
-                border-color: rgba(249, 115, 22, 0.45);
-            }
-
-            .unlocked {
-                border-color: rgba(52, 211, 153, 0.6);
-                background: rgba(52, 211, 153, 0.14);
-            }
-
-            .shake {
-                animation: shake 250ms linear;
-            }
-
-            @keyframes shake {
-                25% { transform: translateX(-5px); }
-                50% { transform: translateX(5px); }
-                75% { transform: translateX(-3px); }
-            }
-
-            @media (max-width: 860px) {
-                .shell {
+            @media (max-width: 850px) {
+                .note-panel {
                     grid-template-columns: 1fr;
                 }
+            }
 
-                .hero, .card {
-                    padding: 22px;
-                }
+            /* subtle hidden clue */
+            .footer::after {
+                content: " integrity > visibility ";
+                opacity: 0.08;
             }
         </style>
     </head>
-    <body>
-        <main class="shell" id="vault" data-slots="4" data-seed="vault">
-            <section class="panel hero">
-                <span class="eyebrow"><span class="pulse" id="signal" aria-label="signal"></span> Private workspace</span>
-                <h1>Note Vault</h1>
-                <p class="lead">Capture reminders, leave yourself breadcrumbs, and watch the access meter. The vault opens only when the right pattern is entered at the right time.</p>
 
-                <div class="composer">
-                    <textarea id="noteInput" placeholder="Type a note or passphrase here..."></textarea>
-                    <div class="actions">
-                        <button id="addNoteBtn" type="button">Add Secure Note</button>
-                        <button class="ghost" id="resetBtn" type="button">Reset</button>
-                    </div>
+    <body>
+        <div class="app-container">
+            <div class="topbar">
+                <h1>Secure Notes Vault</h1>
+
+                <div class="status">Runtime Status: SECURE</div>
+            </div>
+
+            <div class="note-panel">
+                <div class="panel">
+                    <h2>Encrypted Notes</h2>
+
+                    <textarea id="noteInput" placeholder="Write a secure note..."></textarea>
+
+                    <button onclick="addNote()">Save Secure Note</button>
+
+                    <div class="notes" id="notes"></div>
                 </div>
 
-                <div class="notes" id="notes" aria-live="polite"></div>
-            </section>
+                <div class="panel">
+                    <h2>Vault Access</h2>
 
-            <aside class="sidebar">
-                <section class="panel card locked" id="accessCard">
-                    <h2>Access Meter</h2>
-                    <div class="status"><span id="accessLabel">Locked</span><span id="accessScore">0 / 4</span></div>
-                    <div class="meter"><span id="meterFill"></span></div>
-                    <p class="hint">The app rewards the correct sequence more than random guessing.</p>
-                    <div class="tag-row">
-                        <span class="tag">local-only</span>
-                        <span class="tag">decoy-aware</span>
-                        <span class="tag">pattern locked</span>
-                    </div>
-                </section>
+                    <p>This environment uses client-side integrity verification.</p>
 
-                <section class="panel card">
-                    <h2>Workspace Hints</h2>
-                    <div class="hint-grid">
-                        <div class="hint"><b>Count:</b> Fill the empty slots before asking the vault to open.</div>
-                        <div class="hint"><b>Hue:</b> The interface accent has a name, not just a hex code.</div>
-                        <div class="hint"><b>Seed:</b> The workspace remembers what it is called.</div>
-                        <div class="hint"><b>Signal:</b> Some status lights respond to attention.</div>
+                    <p>Unauthorized runtime manipulation may be logged automatically.</p>
+
+                    <div id="puzzleArea">
+                        <div class="challenge-box">
+                            <h2>Restricted</h2>
+
+                            <p>Access level insufficient.</p>
+
+                            <p>Use application features to continue.</p>
+                        </div>
                     </div>
-                </section>
-            </aside>
-        </main>
+                </div>
+            </div>
+
+            <div class="footer">Secure Runtime Environment v2.4</div>
+        </div>
 
         <script src="vault.js"></script>
     </body>
