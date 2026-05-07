@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Base64 encoded fragments
 const encodedFragments = [
-    "Vk1NeA==",
-    "eGRHeA==",
-    "a2IyNTc=",
-    "ZjIxdg==",
-    "YzNSbA==",
-    "Y2w5aw==",
-    "YjIwPQ=="
+    "WDFZTmwy",
+    "VWNpdVVj",
+    "aU5DbWlE",
+    "TWdrTkNm",
+    "RTJZY2lD",
+    "OXhqMTlx",
+    "ajNVOQ=="
 ];
 
 // ---------------------------
@@ -104,7 +104,7 @@ async function sha256(message) {
 //
 
 const expectedHash =
-    "dcf25479faed20f7df555247da1fd2806b42281c9097b1544eb13b6d866caf78";
+    "03a176f611428739b89282c12526def2e27944201438df4dd465c3eed3bb0250";
 
 // ---------------------------
 // Hidden Debug Object
