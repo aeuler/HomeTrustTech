@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Trust Tech Admin Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f5f7fb;
+    }
+
+    .dashboard-card {
+      border: 0;
+      border-radius: 1.25rem;
+      box-shadow: 0 18px 45px rgba(16, 24, 40, 0.08);
+    }
+
+    .stat-card {
+      border: 0;
+      border-radius: 1rem;
+      box-shadow: 0 10px 28px rgba(16, 24, 40, 0.08);
+    }
+
+    .table thead th {
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .priority-high {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .priority-medium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .priority-low {
+      background: #dcfce7;
+      color: #166534;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <span class="navbar-brand fw-semibold">
+        <i class="bi bi-shield-check me-2"></i>Home Trust Tech Admin
+      </span>
+      <a href="index.html" class="btn btn-outline-light btn-sm rounded-pill">Back to Site</a>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
+      <div>
+        <h1 class="fw-bold mb-1">Lead Dashboard</h1>
+        <p class="text-secondary mb-0">Mock JSON-powered admin panel for practice.</p>
+      </div>
+      <button id="refreshBtn" class="btn btn-primary rounded-pill px-4">
+        <i class="bi bi-arrow-clockwise me-1"></i>Refresh Data
+      </button>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="text-secondary small">Total Leads</div>
+            <div id="totalLeads" class="h3 fw-bold mb-0">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="text-secondary small">Open Leads</div>
+            <div id="openLeads" class="h3 fw-bold mb-0">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="text-secondary small">High Priority</div>
+            <div id="highPriority" class="h3 fw-bold mb-0">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card stat-card">
+          <div class="card-body">
+            <div class="text-secondary small">Closed</div>
+            <div id="closedLeads" class="h3 fw-bold mb-0">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card dashboard-card">
+      <div class="card-body p-4">
+        <div class="row g-3 mb-4">
+          <div class="col-lg-5">
+            <label class="form-label">Search</label>
+            <input id="searchInput" class="form-control" placeholder="Search name, email, need, or message">
+          </div>
+
+          <div class="col-lg-3">
+            <label class="form-label">Priority</label>
+            <select id="priorityFilter" class="form-select">
+              <option value="all">All priorities</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          <div class="col-lg-3">
+            <label class="form-label">Status</label>
+            <select id="statusFilter" class="form-select">
+              <option value="all">All statuses</option>
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+
+          <div class="col-lg-1 d-flex align-items-end">
+            <button id="clearBtn" class="btn btn-outline-secondary w-100">
+              <i class="bi bi-x-circle"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th data-sort="id">ID</th>
+                <th data-sort="name">Name</th>
+                <th data-sort="email">Email</th>
+                <th data-sort="need">Need</th>
+                <th data-sort="priority">Priority</th>
+                <th data-sort="status">Status</th>
+                <th data-sort="created_at">Created</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTable"></tbody>
+          </table>
+        </div>
+
+        <div id="emptyState" class="text-center text-secondary py-4 d-none">
+          No matching leads found.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let leads = [];
+    let sortKey = "created_at";
+    let sortDirection = "desc";
+
+    const leadsTable = document.getElementById("leadsTable");
+    const searchInput = document.getElementById("searchInput");
+    const priorityFilter = document.getElementById("priorityFilter");
+    const statusFilter = document.getElementById("statusFilter");
+    const emptyState = document.getElementById("emptyState");
+
+    async function loadLeads() {
+      try {
+        const response = await fetch("leads.json", { cache: "no-store" });
+        leads = await response.json();
+        renderDashboard();
+      } catch (error) {
+        console.error(error);
+        leadsTable.innerHTML = `
+          <tr>
+            <td colspan="8" class="text-danger">
+              Could not load leads.json. Make sure it is in the same folder as admin.html.
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    function renderDashboard() {
+      updateStats();
+      renderTable();
+    }
+
+    function updateStats() {
+      document.getElementById("totalLeads").textContent = leads.length;
+      document.getElementById("openLeads").textContent =
+        leads.filter(lead => lead.status === "open").length;
+      document.getElementById("highPriority").textContent =
+        leads.filter(lead => lead.priority === "high").length;
+      document.getElementById("closedLeads").textContent =
+        leads.filter(lead => lead.status === "closed").length;
+    }
+
+    function getFilteredLeads() {
+      const search = searchInput.value.toLowerCase().trim();
+      const priority = priorityFilter.value;
+      const status = statusFilter.value;
+
+      return leads
+        .filter(lead => {
+          const searchableText = `
+            ${lead.name}
+            ${lead.email}
+            ${lead.need}
+            ${lead.message}
+          `.toLowerCase();
+
+          const matchesSearch = searchableText.includes(search);
+          const matchesPriority = priority === "all" || lead.priority === priority;
+          const matchesStatus = status === "all" || lead.status === status;
+
+          return matchesSearch && matchesPriority && matchesStatus;
+        })
+        .sort((a, b) => {
+          const aValue = a[sortKey];
+          const bValue = b[sortKey];
+
+          if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
+          if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+          return 0;
+        });
+    }
+
+    function renderTable() {
+      const filtered = getFilteredLeads();
+
+      leadsTable.innerHTML = "";
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove("d-none");
+        return;
+      }
+
+      emptyState.classList.add("d-none");
+
+      filtered.forEach(lead => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${lead.id}</td>
+          <td class="fw-semibold">${lead.name}</td>
+          <td><a href="mailto:${lead.email}">${lead.email}</a></td>
+          <td>${lead.need}</td>
+          <td>
+            <span class="badge rounded-pill priority-${lead.priority}">
+              ${lead.priority}
+            </span>
+          </td>
+          <td>
+            <span class="badge rounded-pill ${lead.status === "open" ? "text-bg-success" : "text-bg-secondary"}">
+              ${lead.status}
+            </span>
+          </td>
+          <td>${lead.created_at}</td>
+          <td>${lead.message}</td>
+        `;
+
+        leadsTable.appendChild(row);
+      });
+    }
+
+    document.querySelectorAll("[data-sort]").forEach(header => {
+      header.addEventListener("click", () => {
+        const key = header.dataset.sort;
+
+        if (sortKey === key) {
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
+        } else {
+          sortKey = key;
+          sortDirection = "asc";
+        }
+
+        renderTable();
+      });
+    });
+
+    searchInput.addEventListener("input", renderTable);
+    priorityFilter.addEventListener("change", renderTable);
+    statusFilter.addEventListener("change", renderTable);
+
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      searchInput.value = "";
+      priorityFilter.value = "all";
+      statusFilter.value = "all";
+      renderTable();
+    });
+
+    document.getElementById("refreshBtn").addEventListener("click", loadLeads);
+
+    loadLeads();
+  </script>
+</body>
+</html>
