@@ -13612,6 +13612,7 @@
     "need": "IT Troubleshooting",
     "priority": "low",
     "status": "open",
+    "internal_note": "FLAG{DONT_STORE_SECRETS_IN_FRONTEND_DATA",
     "message": "Customer has slow browser performance and frequent pop-ups.",
     "support_history": [
       "Initial request received",
