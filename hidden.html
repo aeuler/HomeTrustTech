@@ -3,268 +3,178 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>Secure Notes Vault</title>
-
         <style>
             * {
-                box-sizing: border-box;
+            box-sizing: border-box;
             }
-
             body {
-                margin: 0;
-                padding: 0;
-                min-height: 100vh;
-
-                background: radial-gradient(circle at top left, #1e293b, #020617);
-
-                font-family: Arial, sans-serif;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #1e293b, #020617);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
             }
-
             .app-container {
-                width: 95%;
-                max-width: 1100px;
-
-                background: rgba(15, 23, 42, 0.92);
-
-                border: 1px solid rgba(255, 255, 255, 0.08);
-
-                border-radius: 16px;
-
-                padding: 30px;
-
-                box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-
-                backdrop-filter: blur(8px);
+            width: 95%;
+            max-width: 1100px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
             }
-
             .topbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
             }
-
             .topbar h1 {
-                margin: 0;
-                font-size: 28px;
-                color: #38bdf8;
+            margin: 0;
+            font-size: 28px;
+            color: #38bdf8;
             }
-
             .status {
-                font-size: 14px;
-                color: #94a3b8;
+            font-size: 14px;
+            color: #94a3b8;
             }
-
             .note-panel {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
             }
-
             .panel {
-                background: rgba(255, 255, 255, 0.03);
-
-                border: 1px solid rgba(255, 255, 255, 0.05);
-
-                border-radius: 12px;
-
-                padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
             }
-
             textarea {
-                width: 100%;
-                height: 130px;
-
-                background: #0f172a;
-
-                border: 1px solid #334155;
-
-                color: white;
-
-                border-radius: 10px;
-
-                padding: 15px;
-
-                resize: none;
-
-                font-size: 15px;
+            width: 100%;
+            height: 130px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 10px;
+            padding: 15px;
+            resize: none;
+            font-size: 15px;
             }
-
             textarea:focus,
             input:focus {
-                outline: none;
-                border-color: #38bdf8;
+            outline: none;
+            border-color: #38bdf8;
             }
-
             button {
-                margin-top: 15px;
-
-                width: 100%;
-
-                padding: 12px;
-
-                border: none;
-
-                border-radius: 10px;
-
-                background: linear-gradient(135deg, #0ea5e9, #2563eb);
-
-                color: white;
-
-                font-size: 15px;
-
-                cursor: pointer;
-
-                transition: 0.2s;
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
             }
-
             button:hover {
-                transform: translateY(-2px);
-                opacity: 0.95;
+            transform: translateY(-2px);
+            opacity: 0.95;
             }
-
             .notes {
-                margin-top: 20px;
+            margin-top: 20px;
             }
-
             .note {
-                background: rgba(255, 255, 255, 0.05);
-
-                border-left: 3px solid #38bdf8;
-
-                padding: 12px;
-
-                margin-bottom: 10px;
-
-                border-radius: 8px;
-
-                color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #38bdf8;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            color: #e2e8f0;
             }
-
             .challenge-box,
             .success-box {
-                margin-top: 20px;
-
-                background: rgba(255, 255, 255, 0.04);
-
-                border: 1px solid rgba(255, 255, 255, 0.06);
-
-                border-radius: 12px;
-
-                padding: 20px;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px;
             }
-
             .challenge-box h2,
             .success-box h2 {
-                margin-top: 0;
-                color: #38bdf8;
+            margin-top: 0;
+            color: #38bdf8;
             }
-
             input {
-                width: 100%;
-
-                margin-top: 10px;
-
-                padding: 12px;
-
-                border-radius: 10px;
-
-                border: 1px solid #334155;
-
-                background: #0f172a;
-
-                color: white;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
             }
-
             code {
-                display: block;
-
-                margin-top: 15px;
-
-                padding: 15px;
-
-                border-radius: 10px;
-
-                background: black;
-
-                color: lime;
-
-                overflow-wrap: anywhere;
+            display: block;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background: black;
+            color: lime;
+            overflow-wrap: anywhere;
             }
-
             .footer {
-                margin-top: 25px;
-
-                text-align: center;
-
-                color: #64748b;
-
-                font-size: 13px;
+            margin-top: 25px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
             }
-
             @media (max-width: 850px) {
-                .note-panel {
-                    grid-template-columns: 1fr;
-                }
+            .note-panel {
+            grid-template-columns: 1fr;
             }
-
+            }
             /* subtle hidden clue */
             .footer::after {
-                content: " integrity > visibility ";
-                opacity: 0.08;
+            content: " integrity > visibility ";
+            opacity: 0.08;
             }
         </style>
     </head>
-
     <body>
         <div class="app-container">
             <div class="topbar">
                 <h1>Secure Notes Vault</h1>
-
                 <div class="status">Runtime Status: SECURE</div>
             </div>
-
             <div class="note-panel">
                 <div class="panel">
                     <h2>Encrypted Notes</h2>
-
                     <textarea id="noteInput" placeholder="Write a secure note..."></textarea>
-
                     <button onclick="addNote()">Save Secure Note</button>
-
                     <div class="notes" id="notes"></div>
                 </div>
-
                 <div class="panel">
                     <h2>Vault Access</h2>
-
                     <p>This environment uses client-side integrity verification.</p>
-
                     <p>Unauthorized runtime manipulation may be logged automatically.</p>
-
                     <div id="puzzleArea">
                         <div class="challenge-box">
                             <h2>Restricted</h2>
-
                             <p>Access level insufficient.</p>
-
                             <p>Use application features to continue.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="footer">Secure Runtime Environment v2.4</div>
         </div>
-
         <script src="vault.js"></script>
     </body>
 </html>

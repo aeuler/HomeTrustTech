@@ -1,242 +1,205 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- Gsrh SGNO xlnnvmg dzh vmxibkgvw kfiklhvob gl kilgvxg hvmhrgrev wzgz ovzph.
-
-        Uozt: Xsvxp /srwwvm.sgno uli gsv uozt!-->
+        <!-- Dszg rh gsrh? Zm SGNO xlnnnvmg vmxibkgvw drgs zm zgyzhs xrksvi! Gsviv rh z srwwvm kztv, xsvxplfg /rmul.sgno uli wvyfttrmt kfiklhvh!-->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Home Trust Tech</title>
-
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-        />
-
+            />
         <style>
             :root {
-                --nav-h: 76px;
-                --brand-blue: #2563eb;
-                --brand-indigo: #4f46e5;
-                --ink: #101828;
-                --muted: #667085;
+            --nav-h: 76px;
+            --brand-blue: #2563eb;
+            --brand-indigo: #4f46e5;
+            --ink: #101828;
+            --muted: #667085;
             }
-
             html {
-                scroll-behavior: smooth;
+            scroll-behavior: smooth;
             }
-
             body {
-                padding-top: var(--nav-h);
-                color: var(--ink);
-                background: #fff;
+            padding-top: var(--nav-h);
+            color: var(--ink);
+            background: #fff;
             }
-
             section[id] {
-                scroll-margin-top: calc(var(--nav-h) + 14px);
+            scroll-margin-top: calc(var(--nav-h) + 14px);
             }
-
             .navbar {
-                min-height: var(--nav-h);
-                backdrop-filter: blur(12px);
-                background: rgba(15, 23, 42, 0.96) !important;
+            min-height: var(--nav-h);
+            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.96) !important;
             }
-
             .navbar-logo {
-                max-height: 48px;
-                width: auto;
-                object-fit: contain;
-                transition: transform 0.2s ease;
+            max-height: 48px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.2s ease;
             }
-
             .navbar-brand:hover .navbar-logo {
-                transform: scale(1.04);
+            transform: scale(1.04);
             }
-
             .btn {
-                transition:
-                    transform 0.2s ease,
-                    box-shadow 0.2s ease;
+            transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
             }
-
             .btn:hover {
-                transform: translateY(-1px);
+            transform: translateY(-1px);
             }
-
             .btn-primary {
-                background: linear-gradient(135deg, var(--brand-blue), var(--brand-indigo));
-                border: 0;
-                box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-indigo));
+            border: 0;
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
             }
-
             .btn-primary:hover {
-                filter: brightness(1.05);
+            filter: brightness(1.05);
             }
-
             .parallax {
-                position: relative;
-                min-height: 78vh;
-                display: grid;
-                place-items: center;
-                color: #fff;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                overflow: hidden;
+            position: relative;
+            min-height: 78vh;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
             }
-
             @media (max-width: 991.98px), (prefers-reduced-motion: reduce) {
-                .parallax {
-                    background-attachment: scroll;
-                }
-                html {
-                    scroll-behavior: auto;
-                }
+            .parallax {
+            background-attachment: scroll;
             }
-
+            html {
+            scroll-behavior: auto;
+            }
+            }
             .parallax::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.38), transparent 36%),
-                    linear-gradient(120deg, rgba(2, 6, 23, 0.88), rgba(15, 23, 42, 0.56));
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.38), transparent 36%),
+            linear-gradient(120deg, rgba(2, 6, 23, 0.88), rgba(15, 23, 42, 0.56));
             }
-
             .parallax > .content {
-                position: relative;
-                z-index: 1;
+            position: relative;
+            z-index: 1;
             }
-
             .hero {
-                min-height: 88vh;
+            min-height: 88vh;
             }
-
             .glass {
-                backdrop-filter: blur(14px);
-                background: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                border-radius: 1.5rem;
-                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 1.5rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
             }
-
             .eyebrow {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.45rem;
-                padding: 0.45rem 0.8rem;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.12);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                color: rgba(255, 255, 255, 0.86);
-                font-size: 0.82rem;
-                font-weight: 600;
-                letter-spacing: 0.04em;
-                text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
             }
-
             .trust-strip {
-                margin-top: -34px;
-                position: relative;
-                z-index: 2;
+            margin-top: -34px;
+            position: relative;
+            z-index: 2;
             }
-
             .trust-card {
-                border: 0;
-                border-radius: 1.25rem;
-                box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
+            border: 0;
+            border-radius: 1.25rem;
+            box-shadow: 0 16px 40px rgba(16, 24, 40, 0.12);
             }
-
             .feature-icon {
-                width: 3.25rem;
-                height: 3.25rem;
-                display: inline-grid;
-                place-items: center;
-                border-radius: 1rem;
+            width: 3.25rem;
+            height: 3.25rem;
+            display: inline-grid;
+            place-items: center;
+            border-radius: 1rem;
             }
-
             .card-hover {
-                border: 1px solid rgba(16, 24, 40, 0.08);
-                border-radius: 1.35rem;
-                transition:
-                    transform 180ms ease,
-                    box-shadow 180ms ease,
-                    border-color 180ms ease;
+            border: 1px solid rgba(16, 24, 40, 0.08);
+            border-radius: 1.35rem;
+            transition:
+            transform 180ms ease,
+            box-shadow 180ms ease,
+            border-color 180ms ease;
             }
-
             .card-hover:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 22px 50px rgba(16, 24, 40, 0.13);
-                border-color: rgba(37, 99, 235, 0.26);
+            transform: translateY(-6px);
+            box-shadow: 0 22px 50px rgba(16, 24, 40, 0.13);
+            border-color: rgba(37, 99, 235, 0.26);
             }
-
             .section-kicker {
-                color: var(--brand-blue);
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                font-size: 0.78rem;
+            color: var(--brand-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
             }
-
             .divider {
-                height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
             }
-
             .divider-dark {
-                height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(16, 24, 40, 0.14), transparent);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 24, 40, 0.14), transparent);
             }
-
             .premium-form {
-                border-radius: 1.5rem;
-                border: 1px solid rgba(16, 24, 40, 0.08);
-                box-shadow: 0 26px 70px rgba(16, 24, 40, 0.14);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(16, 24, 40, 0.08);
+            box-shadow: 0 26px 70px rgba(16, 24, 40, 0.14);
             }
-
             .form-control,
             .form-select {
-                border-radius: 0.9rem;
-                border-color: #d0d5dd;
+            border-radius: 0.9rem;
+            border-color: #d0d5dd;
             }
-
             .form-control:focus,
             .form-select:focus {
-                border-color: var(--brand-blue);
-                box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.12);
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.12);
             }
-
             footer a {
-                text-decoration: none;
+            text-decoration: none;
             }
-
             @media (max-width: 575.98px) {
-                .hero h1 {
-                    font-size: 2.35rem;
-                }
-                .navbar-logo {
-                    max-height: 42px;
-                }
-                .trust-strip {
-                    margin-top: 0;
-                }
+            .hero h1 {
+            font-size: 2.35rem;
+            }
+            .navbar-logo {
+            max-height: 42px;
+            }
+            .trust-strip {
+            margin-top: 0;
+            }
             }
         </style>
     </head>
-
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom border-light border-opacity-10">
             <div class="container">
                 <a class="navbar-brand fw-semibold d-flex align-items-center" href="#top">
-                    <img src="hometrustlogo.png" alt="Home Trust Tech Logo" class="navbar-logo me-2" />
-                    <span>Home Trust Tech</span>
+                <img src="hometrustlogo.png" alt="Home Trust Tech Logo" class="navbar-logo me-2" />
+                <span>Home Trust Tech</span>
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                    <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 py-2 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
@@ -245,21 +208,20 @@
                         <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
                         <li class="nav-item ms-lg-2">
                             <a class="btn btn-primary btn-sm rounded-pill px-4 mt-2 mt-lg-0" href="#contact">
-                                Get Help
+                            Get Help
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         <header
             id="top"
             class="parallax hero"
             style="
-                background-image: url(&quot;https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=2400&q=70&quot;);
+            background-image: url(&quot;https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=2400&q=70&quot;);
             "
-        >
+            >
             <div class="content container py-5">
                 <div class="row align-items-center g-4">
                     <div class="col-lg-8">
@@ -268,25 +230,21 @@
                                 <i class="bi bi-shield-check"></i>
                                 Security • Troubleshooting • Consulting
                             </div>
-
                             <h1 class="display-4 fw-bold mb-3">
                                 Reliable tech help for your home, without the confusing jargon.
                             </h1>
-
                             <p class="lead mb-4 text-white-75">
                                 Home Trust Tech helps with setup, repair, troubleshooting, and security guidance so your
                                 devices, Wi-Fi, and accounts work the way they should.
                             </p>
-
                             <div class="d-flex flex-wrap gap-3">
                                 <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-4">
-                                    Request Help Today
+                                Request Help Today
                                 </a>
                                 <a href="#services" class="btn btn-outline-light btn-lg rounded-pill px-4">
-                                    View Services
+                                View Services
                                 </a>
                             </div>
-
                             <div class="row g-3 mt-4">
                                 <div class="col-6 col-md-3">
                                     <div class="small text-white-50">Local Service</div>
@@ -307,7 +265,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4 d-none d-lg-block">
                         <div class="glass p-4">
                             <h5 class="fw-semibold mb-3">Common issues we solve</h5>
@@ -323,7 +280,6 @@
                 </div>
             </div>
         </header>
-
         <div class="trust-strip">
             <div class="container">
                 <div class="card trust-card">
@@ -346,7 +302,6 @@
                 </div>
             </div>
         </div>
-
         <section id="services" class="py-5">
             <div class="container py-4">
                 <div class="row align-items-end g-3 mb-4">
@@ -362,7 +317,6 @@
                         <a class="btn btn-outline-dark rounded-pill px-4" href="#contact">Request a Quote</a>
                     </div>
                 </div>
-
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 card-hover">
@@ -383,7 +337,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 card-hover">
                             <div class="card-body p-4">
@@ -403,7 +356,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 card-hover">
                             <div class="card-body p-4">
@@ -426,14 +378,13 @@
                 </div>
             </div>
         </section>
-
         <section
             class="parallax"
             style="
-                min-height: 45vh;
-                background-image: url(&quot;https://images.unsplash.com/photo-1526378722370-6f4c6e8b9d8b?auto=format&fit=crop&w=2400&q=70&quot;);
+            min-height: 45vh;
+            background-image: url(&quot;https://images.unsplash.com/photo-1526378722370-6f4c6e8b9d8b?auto=format&fit=crop&w=2400&q=70&quot;);
             "
-        >
+            >
             <div class="content container text-center py-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -446,7 +397,6 @@
                 </div>
             </div>
         </section>
-
         <section id="about" class="py-5 bg-light">
             <div class="container py-4">
                 <div class="row g-4 align-items-center">
@@ -458,7 +408,6 @@
                             you are setting up a new device or trying to secure your accounts, we make the process
                             easier to understand.
                         </p>
-
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="p-3 bg-white border rounded-4 h-100">
@@ -494,14 +443,13 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-6">
                         <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
                             <img
                                 alt="Technology support"
                                 class="img-fluid"
                                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70"
-                            />
+                                />
                             <div class="card-body p-4">
                                 <div class="d-flex flex-wrap gap-2">
                                     <span class="badge text-bg-dark rounded-pill px-3 py-2">Setup</span>
@@ -518,7 +466,6 @@
                 </div>
             </div>
         </section>
-
         <section id="work" class="py-5">
             <div class="container py-4">
                 <div class="text-center mb-4">
@@ -526,7 +473,6 @@
                     <h2 class="fw-bold mb-2">Common ways we help.</h2>
                     <p class="text-secondary mb-0">Simple examples of outcomes customers usually want.</p>
                 </div>
-
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="card h-100 card-hover">
@@ -539,7 +485,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="card h-100 card-hover">
                             <div class="card-body p-4">
@@ -552,7 +497,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4">
                         <div class="card h-100 card-hover">
                             <div class="card-body p-4">
@@ -567,7 +511,6 @@
                 </div>
             </div>
         </section>
-
         <section id="pricing" class="py-5 bg-light">
             <div class="container py-4">
                 <div class="text-center mb-4">
@@ -577,7 +520,6 @@
                         Final pricing depends on scope, but this gives you a clear place to start.
                     </p>
                 </div>
-
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm rounded-4">
@@ -593,7 +535,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-lg rounded-4 position-relative">
                             <div class="position-absolute top-0 start-50 translate-middle">
@@ -611,7 +552,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm rounded-4">
                             <div class="card-body p-4">
@@ -629,7 +569,6 @@
                 </div>
             </div>
         </section>
-
         <section id="contact" class="py-5 bg-light">
             <div class="container py-4">
                 <div class="row justify-content-center text-center mb-4">
@@ -641,7 +580,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="row g-4 align-items-stretch">
                     <div class="col-lg-7">
                         <div class="bg-white premium-form h-100 p-4 p-md-5">
@@ -655,7 +593,6 @@
                                     <span>No spam. Just solutions.</span>
                                 </div>
                             </div>
-
                             <form id="contactForm" action="https://formspree.io/f/mvzlkdkl" method="POST">
                                 <input type="hidden" name="_subject" value="New Home Trust Tech Lead" />
                                 <input
@@ -665,8 +602,7 @@
                                     autocomplete="off"
                                     style="position: absolute; left: -9999px; opacity: 0; height: 0; width: 0"
                                     aria-hidden="true"
-                                />
-
+                                    />
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="name" class="form-label">Name</label>
@@ -676,9 +612,8 @@
                                             class="form-control form-control-lg"
                                             placeholder="Jane Doe"
                                             required
-                                        />
+                                            />
                                     </div>
-
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email</label>
                                         <input
@@ -688,9 +623,8 @@
                                             type="email"
                                             placeholder="jane@company.com"
                                             required
-                                        />
+                                            />
                                     </div>
-
                                     <div class="col-12">
                                         <label for="need" class="form-label">What do you need?</label>
                                         <select id="need" name="need" class="form-select form-select-lg">
@@ -701,7 +635,6 @@
                                             <option value="Other">Other</option>
                                         </select>
                                     </div>
-
                                     <div class="col-12">
                                         <label for="message" class="form-label">Message</label>
                                         <textarea
@@ -711,22 +644,19 @@
                                             rows="5"
                                             placeholder="Tell us what’s going on, what device or service is involved, and how soon you need help..."
                                             required
-                                        ></textarea>
+                                            ></textarea>
                                     </div>
-
                                     <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
                                         <button class="btn btn-primary btn-lg rounded-pill px-4" type="submit">
-                                            Send Message
+                                        Send Message
                                         </button>
                                         <span class="small text-secondary">
-                                            You’ll see a confirmation after submitting.
+                                        You’ll see a confirmation after submitting.
                                         </span>
                                     </div>
                                 </div>
                             </form>
-
                             <div class="divider-dark my-4"></div>
-
                             <div class="row g-3 small">
                                 <div class="col-md-4">
                                     <div class="d-flex gap-2 align-items-start">
@@ -737,7 +667,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-4">
                                     <div class="d-flex gap-2 align-items-start">
                                         <i class="bi bi-clock text-primary"></i>
@@ -747,7 +676,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-4">
                                     <div class="d-flex gap-2 align-items-start">
                                         <i class="bi bi-house-check text-primary"></i>
@@ -760,14 +688,12 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-5">
                         <div class="bg-dark text-white shadow-lg rounded-4 h-100 p-4 p-md-5">
                             <h5 class="fw-semibold mb-2">Home Trust Tech</h5>
                             <p class="text-white-50 mb-4">
                                 Local, reliable help for setup, repair, troubleshooting, and security guidance.
                             </p>
-
                             <div class="d-flex gap-3 align-items-start mb-3">
                                 <i class="bi bi-geo-alt fs-4"></i>
                                 <div>
@@ -775,7 +701,6 @@
                                     <div class="text-white-50">Virginia Beach, VA</div>
                                 </div>
                             </div>
-
                             <div class="d-flex gap-3 align-items-start mb-3">
                                 <i class="bi bi-envelope fs-4"></i>
                                 <div>
@@ -783,7 +708,6 @@
                                     <div class="text-white-50">hometrusttech@gmail.com</div>
                                 </div>
                             </div>
-
                             <div class="d-flex gap-3 align-items-start mb-3">
                                 <i class="bi bi-telephone fs-4"></i>
                                 <div>
@@ -791,7 +715,6 @@
                                     <div class="text-white-50">(757) 512-8704</div>
                                 </div>
                             </div>
-
                             <div class="d-flex gap-3 align-items-start mb-4">
                                 <i class="bi bi-clock fs-4"></i>
                                 <div>
@@ -799,9 +722,7 @@
                                     <div class="text-white-50">Mon–Fri, 9am–5pm</div>
                                 </div>
                             </div>
-
                             <div class="divider my-4"></div>
-
                             <div class="p-3 rounded-4 bg-white bg-opacity-10">
                                 <div class="fw-semibold mb-1">What to include</div>
                                 <ul class="mb-0 text-white-50">
@@ -811,10 +732,9 @@
                                     <li>Deadline or urgency</li>
                                 </ul>
                             </div>
-
                             <div class="d-flex gap-2 mt-4 flex-wrap">
                                 <a class="btn btn-outline-light rounded-pill" href="#top">
-                                    <i class="bi bi-arrow-up"></i> Back to top
+                                <i class="bi bi-arrow-up"></i> Back to top
                                 </a>
                                 <a class="btn btn-outline-light rounded-pill" href="#services">Explore services</a>
                             </div>
@@ -823,12 +743,11 @@
                 </div>
             </div>
         </section>
-
         <footer class="py-4 border-top">
             <div class="container">
                 <div
                     class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2"
-                >
+                    >
                     <div class="text-secondary small">
                         © <span id="year"></span> Home Trust Tech. All rights reserved.
                     </div>
@@ -840,12 +759,10 @@
                 </div>
             </div>
         </footer>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
         <script>
             document.getElementById("year").textContent = new Date().getFullYear();
-
+            
             document.querySelectorAll("#mainNav a.nav-link, #mainNav a.btn").forEach((a) => {
                 a.addEventListener("click", () => {
                     const nav = document.getElementById("mainNav");

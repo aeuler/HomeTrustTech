@@ -5,12 +5,7 @@
 // ---------------------------
 // Decoy Flags
 // ---------------------------
-const decoys = [
-    "FLAG{console_fake}",
-    "FLAG{rotor_failure}",
-    "FLAG{base64_easy_mode}",
-    "FLAG{you_found_a_decoy}"
-];
+const decoys = ["FLAG{console_fake}", "FLAG{rotor_failure}", "FLAG{base64_easy_mode}", "FLAG{you_found_a_decoy}"];
 
 // ---------------------------
 // Console Boot Messages
@@ -29,15 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     hiddenNode.style.display = "none";
     hiddenNode.id = "vault-clue";
 
-    hiddenNode.setAttribute(
-        "data-rotation",
-        "7"
-    );
+    hiddenNode.setAttribute("data-rotation", "7");
 
-    hiddenNode.setAttribute(
-        "data-hint",
-        "ROT cipher required after decoding."
-    );
+    hiddenNode.setAttribute("data-hint", "ROT cipher required after decoding.");
 
     document.body.appendChild(hiddenNode);
 
@@ -49,25 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
 // ---------------------------
 
 // Base64 encoded fragments
-const encodedFragments = [
-    "WDFZTmwy",
-    "VWNpdVVj",
-    "aU5DbWlE",
-    "TWdrTkNm",
-    "RTJZY2lD",
-    "OXhqMTlx",
-    "ajNVOQ=="
-];
+const encodedFragments = ["WDFZTmwy", "VWNpdVVj", "aU5DbWlE", "TWdrTkNm", "RTJZY2lD", "OXhqMTlx", "ajNVOQ=="];
 
 // ---------------------------
 // ROT Cipher
 // ---------------------------
 function rotN(str, shift) {
-    return str.replace(/[a-zA-Z]/g, function(char) {
+    return str.replace(/[a-zA-Z]/g, function (char) {
         const start = char <= "Z" ? 65 : 97;
-        return String.fromCharCode(
-            ((char.charCodeAt(0) - start + shift) % 26) + start
-        );
+        return String.fromCharCode(((char.charCodeAt(0) - start + shift) % 26) + start);
     });
 }
 
@@ -77,16 +56,11 @@ function rotN(str, shift) {
 async function sha256(message) {
     const msgBuffer = new TextEncoder().encode(message);
 
-    const hashBuffer = await crypto.subtle.digest(
-        "SHA-256",
-        msgBuffer
-    );
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
 
     const hashArray = Array.from(new Uint8Array(hashBuffer));
 
-    return hashArray
-        .map(b => b.toString(16).padStart(2, "0"))
-        .join("");
+    return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 // ---------------------------
@@ -103,8 +77,7 @@ async function sha256(message) {
 // CTF{console_master_dom_js_css}
 //
 
-const expectedHash =
-    "03a176f611428739b89282c12526def2e27944201438df4dd465c3eed3bb0250";
+const expectedHash = "03a176f611428739b89282c12526def2e27944201438df4dd465c3eed3bb0250";
 
 // ---------------------------
 // Hidden Debug Object
@@ -112,7 +85,7 @@ const expectedHash =
 window.debugRuntime = {
     status: "sandbox",
     fakeFlag: decoys[2],
-    notes: "No useful data."
+    notes: "No useful data.",
 };
 
 // ---------------------------
@@ -181,8 +154,7 @@ function activateVault() {
 // Final Verification
 // ---------------------------
 async function verifyFlag() {
-    const input =
-        document.getElementById("flagInput").value.trim();
+    const input = document.getElementById("flagInput").value.trim();
 
     const hash = await sha256(input);
 
@@ -191,10 +163,7 @@ async function verifyFlag() {
     } else {
         alert("Access Denied");
 
-        console.log(
-            "%c[Vault] Invalid attempt logged.",
-            "color:red;"
-        );
+        console.log("%c[Vault] Invalid attempt logged.", "color:red;");
     }
 }
 
@@ -202,8 +171,7 @@ async function verifyFlag() {
 // Unlock Function
 // ---------------------------
 function unlockVault(flag) {
-    const puzzle =
-        document.getElementById("puzzleArea");
+    const puzzle = document.getElementById("puzzleArea");
 
     puzzle.innerHTML = `
         <div class="success-box">
@@ -217,10 +185,7 @@ function unlockVault(flag) {
         </div>
     `;
 
-    console.log(
-        "%c[Vault] ACCESS GRANTED",
-        "color:lime; font-size:18px;"
-    );
+    console.log("%c[Vault] ACCESS GRANTED", "color:lime; font-size:18px;");
 }
 
 // ---------------------------
@@ -229,33 +194,18 @@ function unlockVault(flag) {
 
 window.vault = {
     help: () => {
-        console.log(
-            "%cAvailable command:",
-            "color:yellow;"
-        );
+        console.log("%cAvailable command:", "color:yellow;");
 
-        console.log(
-            "%cvault.revealHint()",
-            "color:cyan;"
-        );
+        console.log("%cvault.revealHint()", "color:cyan;");
     },
 
     revealHint: () => {
-        console.log(
-            "%cHint:",
-            "color:lime;"
-        );
+        console.log("%cHint:", "color:lime;");
 
-        console.log(
-            "%cDecode fragments first, THEN apply ROT7.",
-            "color:white;"
-        );
+        console.log("%cDecode fragments first, THEN apply ROT7.", "color:white;");
 
-        console.log(
-            "%cDecoy => " + decoys[3],
-            "color:orange;"
-        );
-    }
+        console.log("%cDecoy => " + decoys[3], "color:orange;");
+    },
 };
 
 // ---------------------------
@@ -264,10 +214,7 @@ window.vault = {
 setTimeout(() => {
     console.clear();
 
-    console.log(
-        "%c[Vault] Runtime sanitized.",
-        "color:gray;"
-    );
+    console.log("%c[Vault] Runtime sanitized.", "color:gray;");
 }, 20000);
 
 // ---------------------------
@@ -276,5 +223,5 @@ setTimeout(() => {
 const api = {
     endpoint: "/api/internal/debug",
     token: "FAKE-API-TOKEN",
-    access: false
+    access: false,
 };
